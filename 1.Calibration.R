@@ -5,13 +5,16 @@ getmethodNames()
 
 #1. Build Model
 #Only olive
-mD <- sdm::sdm(occurrence~.,data=d,methods=c('maxent','cart','rf','fda','glm','gam','mars','svm','brt'),replication='sub',test.percent=30,n=10)
+M_olive_D <- sdm::sdm(occurrence~.,data=d,methods=c('maxent','cart','rf','fda','glm','gam','mars','svm','brt'),replication='sub',test.percent=30,n=10)
 getVarImp(mD)
 plot(getVarImp(mD),'auc')
 rcurve(mD, id=, mean=TRUE, smooth=TRUE)
 
+#Only wild olive
+M_olive_W
+
 #Olive, wild and domesticated
-mWD <- sdm::sdm(occurrence~.,data=d,methods=c('maxent','cart','rf','fda','glm','gam','mars','svm','brt'),replication='sub',test.percent=30,n=10)
+M_olive_WD <- sdm::sdm(occurrence~.,data=d,methods=c('maxent','cart','rf','fda','glm','gam','mars','svm','brt'),replication='sub',test.percent=30,n=10)
 getVarImp(mWD)
 plot(getVarImp(mWD),'auc')
 rcurve(mWD, id=, mean=TRUE, smooth=TRUE)

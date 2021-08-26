@@ -11,7 +11,7 @@ library(raster)
 
 #SDM Olives
 #Vars from Arenas-Castro et al. (2020)
-#soil pH (SLPH)(unitless); 
+
 #slope (SLPC; %); 
 #solar orientation (SLOR; degrees); 
 #evapotranspiration (EVTP; mm/year);
@@ -19,6 +19,7 @@ library(raster)
 #autumn precipitation (PRAU; mm), 
 #average winter temperature (TPWT;°C) 
 #continentality index (IDCT; °C).
+
 
 #Check these sources
 #https://sites.ualberta.ca/~ahamann/data/climateeu.html - ClimateEU - water deficit, continentality
@@ -30,11 +31,7 @@ library(raster)
 study_site <- raster::shapefile("C:/fw_space/PIberica2.shp")
 #raster::plot(study_site)
 
-#Soil property variables
-
-#Aridity
-
-#Bioclimatic variables
+#### Bioclimatic variables ####
 b1 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_1.tif")
 b1 <- crop(b1, study_site)
 b1 <- mask(b1, study_site)
@@ -112,20 +109,78 @@ b19 <- crop(b19, study_site)
 b19 <- mask(b19, study_site)
 #plot(b19)
 
+#Other climatic
+#Annual heat:moisture index (MAT+10)/(MAP/1000))
+#PROBLEMS WITH PROJECTION
+ahm <- raster("D:/MOVING/CLIMATE/CLIMATE_PROL_EU/Albers_2.5km_Normal_1961-1990_bioclim/wgs/ahm_wgs84.tif")
+ahm <- resample(ahm, b1, method="bilinear")
+ahm <- crop(ahm, study_site)
+ahm <- mask(ahm, study_site)
+
+#Summer heat:moisture index ((MWMT)/(MSP/1000))
+shm <- raster("D:/MOVING/CLIMATE/CLIMATE_PROL_EU/Albers_2.5km_Normal_1961-1990_bioclim/wgs/shm_wgs84.tif")
+shm <- resample(shm, b1, method="bilinear")
+shm <- crop(shm, study_site)
+shm <- mask(shm, study_site)
+
+#Number of frost-free days
+nffd <- raster("D:/MOVING/CLIMATE/CLIMATE_PROL_EU/Albers_2.5km_Normal_1961-1990_bioclim/wgs/nffd_wgs84.tif")
+nffd <- resample(nffd, b1, method="bilinear")
+nffd <- crop(nffd, study_site)
+nffd <- mask(nffd, study_site)
+
+#Hargreaves reference evaporation
+eref <- raster("D:/MOVING/CLIMATE/CLIMATE_PROL_EU/Albers_2.5km_Normal_1961-1990_bioclim/wgs/eref_wgs84.tif")
+eref <- resample(eref, b1, method="bilinear")
+eref <- crop(eref, study_site)
+eref <- mask(eref, study_site)
 
 
-preds <- stack()
+#### Soil property variables ####
 
-#Load vars
+#Soil moisture
+moisture <- raster("D:/Dados de Solos/Soil Moisture Storage Capacity Derived from the Soil Map of the World/smax/w001001.adf")
+moisture <- resample(moisture, b1, method="bilinear")
+moisture <- crop(moisture, study_site)
+moisture <- mask(moisture, study_site)
+#plot(moisture)
 
-#Load species presente
-#olive_D <-
-#Olive_W <-
+#soil pH
+pH <- raster("D:/MOVING/SOILS/SOIL_Ph/ph_wgs84.tif")
+pH <- resample(pH, b1, method="bilinear")
+pH <- crop(pH, study_site)
+pH <- mask(pH, study_site)
+
+
+#plot(pH)
+
+#Create stack of variables tack 
+preds <- stack(b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,
+               #ahm,shm,nffd,eref,
+               moisture,pH
+               )
+#names(preds)
+#nlayers(preds)
+
+names(preds) <- c("bio1","bio2","bio3","bio4","bio5","bio6","bio7","bio8","bio9",
+                  "bio10","bio11","bio12","bio13","bio14","bio15","bio16","bio17",
+                  "bio18","bio19",
+                  #"ahm", "shm", "nffd", "eref",
+                  "moisture","ph"
+                  )
+
+#Load species presence
+olive_W <- raster::shapefile("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/olive_sylv_wgs84.shp")
+Olive_D <- raster::shapefile("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/olive_domestic_wgs84.shp")
+#
+vine_W <- raster::shapefile("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/vines_sylv_wgs84.shp")
+vine_D <- raster::shapefile("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/vines_domestic_wgs84.shp")
+
 
 #VIF
-vif2 <- usdm::vifstep(preds)#stepwise elimination of highly inflating variables
+vif1 <- usdm::vifstep(preds)#stepwise elimination of highly inflating variables
 usdm::vifcor(preds)
-vif2@results
+vif1@results
 
 #Using the full result of the VIF
 preds2 <- exclude(preds, vif2)
