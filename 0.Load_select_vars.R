@@ -114,3 +114,5 @@ data_olive_WD <- sdmData(train=olive_WD, predictors=preds2, bg=list(n=nrow(olive
 data_vine_W <- sdmData(train=vine_W, predictors=preds2, bg=list(n=nrow(vine_W@data),method='gRandom',remove=TRUE))
 data_vine_D <- sdmData(train=vine_D, predictors=preds2, bg=list(n=nrow(vine_D@data),method='gRandom',remove=TRUE))
 data_vine_WD <- sdmData(train=vine_WD, predictors=preds2, bg=list(n=nrow(vine_WD@data),method='gRandom',remove=TRUE))
+
+save.image("olive_vines_RData")
