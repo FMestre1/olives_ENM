@@ -55,7 +55,7 @@ nffd_10X10 <- raster::rasterize(nffd_S, bio1, field = "nffdmean")
 eref_S <- raster::shapefile("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/Dados/eref_10x10.shp")
 eref_10X10 <- raster::rasterize(eref_S, bio1, field = "erefmean")
 
-#Create stack of variables tack 
+#Create stack of variables 
 preds <- stack(bio1,bio2,bio3,bio4,bio5,bio6,bio7,bio8,bio9,bio10,bio11,bio12,
                bio13,bio14,bio15,bio16,bio17,bio18,bio19,
                ahm_10X10,shm_10X10,nffd_10X10,eref_10X10,
@@ -66,9 +66,7 @@ preds <- stack(bio1,bio2,bio3,bio4,bio5,bio6,bio7,bio8,bio9,bio10,bio11,bio12,
 
 names(preds) <- c("bio1","bio2","bio3","bio4","bio5","bio6","bio7","bio8","bio9",
                   "bio10","bio11","bio12","bio13","bio14","bio15","bio16","bio17",
-                  "bio18","bio19",
-                  "ahm", "shm", "nffd", "eref",
-                  "moisture","ph"
+                  "bio18","bio19","ahm", "shm", "nffd", "eref","moisture","pH"
                   )
 
 #Load species presence
@@ -88,11 +86,31 @@ vif1@results
 #Using VIF to select the variables to consider in the model
 preds2 <- usdm::exclude(preds, vif1)
 
-#Format data
-data_olive_W <- sdmData(train=olive_W, predictors=preds2, bg=nrow(olive_W@data),method='gRandom',remove=TRUE, filename = "data_olive_W")
-data_olive_D <- sdmData(train=olive_D, predictors=preds2, bg=nrow(olive_D@data),method='gRandom',remove=TRUE, filename = "data_olive_D")
-data_olive_WD <- sdmData(train=olive_WD, predictors=preds2, bg=nrow(olive_WD@data),method='gRandom',remove=TRUE, filename = "data_olive_WD")
+#Add columns for species occurrence
+occ <- rep(1,nrow(olive_W@data))
+olive_W@data <- cbind(olive_W@data, occ)
 #
-data_vine_W <- sdmData(train=vine_W, predictors=preds2, bg=nrow(vine_W@data),method='gRandom',remove=TRUE, filename = "data_vine_W")
-data_vine_D <- sdmData(train=vine_D, predictors=preds2, bg=nrow(vine_D@data),method='gRandom',remove=TRUE, filename = "data_vine_D")
-data_vine_WD <- sdmData(train=vine_WD, predictors=preds2, bg=nrow(vine_WD@data),method='gRandom',remove=TRUE, filename = "data_vine_WD")
+occ <- rep(1,nrow(olive_D@data))
+olive_D@data <- cbind(olive_D@data, occ)
+#
+occ <- rep(1,nrow(olive_WD@data))
+olive_WD@data <- cbind(olive_WD@data, occ)
+#
+occ <- rep(1,nrow(vine_D@data))
+vine_D@data <- cbind(vine_D@data, occ)
+#
+occ <- rep(1,nrow(vine_W@data))
+vine_W@data <- cbind(vine_W@data, occ)
+#
+occ <- rep(1,nrow(vine_WD@data))
+vine_WD@data <- cbind(vine_WD@data, occ)
+#
+
+#Format data
+data_olive_W <- sdmData(train=olive_W, predictors=preds2, bg=list(n=nrow(olive_W@data),method='gRandom',remove=TRUE))
+data_olive_D <- sdmData(train=olive_D, predictors=preds2, bg=list(n=nrow(olive_D@data),method='gRandom',remove=TRUE))
+data_olive_WD <- sdmData(train=olive_WD, predictors=preds2, bg=list(n=nrow(olive_WD@data),method='gRandom',remove=TRUE))
+#
+data_vine_W <- sdmData(train=vine_W, predictors=preds2, bg=list(n=nrow(vine_W@data),method='gRandom',remove=TRUE))
+data_vine_D <- sdmData(train=vine_D, predictors=preds2, bg=list(n=nrow(vine_D@data),method='gRandom',remove=TRUE))
+data_vine_WD <- sdmData(train=vine_WD, predictors=preds2, bg=list(n=nrow(vine_WD@data),method='gRandom',remove=TRUE))
