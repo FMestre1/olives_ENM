@@ -16,11 +16,11 @@ library(raster)
 #https://figshare.com/articles/dataset/Global_Aridity_Index_and_Potential_Evapotranspiration_ET0_Climate_Database_v2/7504448/3
 #Above: Global Aridity Index and Potential Evapotranspiration (ET0) Climate Database v2
 
-#Study site
+# 1.Study site
 study_site <- raster::shapefile("C:/fw_space/PIberica2.shp")
 #raster::plot(study_site)
 
-#Load bioclimatic 10x10 km to calibrate ############################
+# 2.Load bioclimatic 10x10 km to calibrate ############################
 bio1 <- raster("D:/Doc/Rasters_PI_geotif/bio1.tif")
 bio2 <- raster("D:/Doc/Rasters_PI_geotif/bio2.tif")
 bio3 <- raster("D:/Doc/Rasters_PI_geotif/bio3.tif")
@@ -40,11 +40,11 @@ bio16 <- raster("D:/Doc/Rasters_PI_geotif/bio16.tif")
 bio17 <- raster("D:/Doc/Rasters_PI_geotif/bio17.tif")
 bio18 <- raster("D:/Doc/Rasters_PI_geotif/bio18.tif")
 bio19 <- raster("D:/Doc/Rasters_PI_geotif/bio19.tif")
-#
-moisture_S <- raster::shapefile("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/Dados/moisture_10x10.shp")
-moisture_10X10 <- raster::rasterize(moisture_S, bio1, field = "moistureme")
-ph_S <- raster::shapefile("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/Dados/ph_10x10.shp")
-ph_10X10 <- raster::rasterize(ph_S, bio1, field = "phmean")
+#Not considered because it has no future projections
+#moisture_S <- raster::shapefile("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/Dados/moisture_10x10.shp")
+#moisture_10X10 <- raster::rasterize(moisture_S, bio1, field = "moistureme")
+#ph_S <- raster::shapefile("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/Dados/ph_10x10.shp")
+#ph_10X10 <- raster::rasterize(ph_S, bio1, field = "phmean")
 #
 ahm_S <- raster::shapefile("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/Dados/ahm_10x10.shp")
 ahm_10X10 <- raster::rasterize(ahm_S, bio1, field = "ahmmean")
@@ -55,21 +55,21 @@ nffd_10X10 <- raster::rasterize(nffd_S, bio1, field = "nffdmean")
 eref_S <- raster::shapefile("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/Dados/eref_10x10.shp")
 eref_10X10 <- raster::rasterize(eref_S, bio1, field = "erefmean")
 
-#Create stack of variables 
+# 3.Create stack of variables 
 preds <- stack(bio1,bio2,bio3,bio4,bio5,bio6,bio7,bio8,bio9,bio10,bio11,bio12,
                bio13,bio14,bio15,bio16,bio17,bio18,bio19,
                ahm_10X10,shm_10X10,nffd_10X10,eref_10X10,
-               moisture_10X10,ph_10X10
-               )
+               ph_10X10)
+
 #names(preds)
 #nlayers(preds)
 
 names(preds) <- c("bio1","bio2","bio3","bio4","bio5","bio6","bio7","bio8","bio9",
                   "bio10","bio11","bio12","bio13","bio14","bio15","bio16","bio17",
-                  "bio18","bio19","ahm", "shm", "nffd", "eref","moisture","pH"
+                  "bio18","bio19","ahm", "shm", "nffd", "eref","pH"
                   )
 
-#Load species presence
+# 4.Load species presence
 olive_W <- raster::shapefile("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/olive_sylv_wgs84.shp")
 olive_D <- raster::shapefile("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/olive_domestic_wgs84.shp")
 olive_WD <- raster::shapefile("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/olive_ALL_wgs84.shp")
@@ -86,7 +86,13 @@ vif1@results
 #Using VIF to select the variables to consider in the model
 preds2 <- usdm::exclude(preds, vif1)
 
-#Add columns for species occurrence
+rm(pred)
+rm(bio1,bio2,bio3,bio4,bio5,bio6,bio7,bio8,bio9,bio10,bio11,bio12,
+               bio13,bio14,bio15,bio16,bio17,bio18,bio19,
+               ahm_10X10,shm_10X10,nffd_10X10,eref_10X10,
+               ph_10X10)
+
+#Add columns for species occurrence (column with value 1)
 occ <- rep(1,nrow(olive_W@data))
 olive_W@data <- cbind(olive_W@data, occ)
 #
@@ -104,9 +110,18 @@ vine_W@data <- cbind(vine_W@data, occ)
 #
 occ <- rep(1,nrow(vine_WD@data))
 vine_WD@data <- cbind(vine_WD@data, occ)
+
+#Simplify the argument table
+olive_W <- olive_W[,-c(1,2)]
+olive_D <- olive_D[,-c(1,2)]
+olive_WD <- olive_WD[,-1]
+#
+vine_W <- vine_W[,-c(1,2)]
+vine_D <- vine_D[,-c(1,2)]
+vine_WD <- vine_WD[,-1]
 #
 
-#Format data
+# 5.Format data
 data_olive_W <- sdmData(train=olive_W, predictors=preds2, bg=list(n=nrow(olive_W@data),method='gRandom',remove=TRUE))
 data_olive_D <- sdmData(train=olive_D, predictors=preds2, bg=list(n=nrow(olive_D@data),method='gRandom',remove=TRUE))
 data_olive_WD <- sdmData(train=olive_WD, predictors=preds2, bg=list(n=nrow(olive_WD@data),method='gRandom',remove=TRUE))
@@ -115,4 +130,8 @@ data_vine_W <- sdmData(train=vine_W, predictors=preds2, bg=list(n=nrow(vine_W@da
 data_vine_D <- sdmData(train=vine_D, predictors=preds2, bg=list(n=nrow(vine_D@data),method='gRandom',remove=TRUE))
 data_vine_WD <- sdmData(train=vine_WD, predictors=preds2, bg=list(n=nrow(vine_WD@data),method='gRandom',remove=TRUE))
 
+#save
 save.image("olive_vines_RData")
+#Load
+memory.limit(size = 50000)
+load("olive_vines_RData")

@@ -1,12 +1,15 @@
 #FMestre
+#27-08-2021
 
-#Variables with higher resolution to project the model to
+###########################################################
+######################### CURRENT ######################### 
+###########################################################
 
-#Study site
-study_site <- raster::shapefile("C:/fw_space/PIberica2.shp")
-#raster::plot(study_site)
+# 8. Load the variables with higher resolution to project the model
 
-#### Bioclimatic variables to project the model to####
+#### Bioclimatic variables to project the model to (many not required, not in the model)
+#I'll load all just in case...
+
 b1 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_1.tif")
 b1 <- crop(b1, study_site)
 b1 <- mask(b1, study_site)
@@ -87,7 +90,6 @@ b19 <- mask(b19, study_site)
 
 #Other climatic
 #Annual heat:moisture index (MAT+10)/(MAP/1000))
-#PROBLEMS WITH PROJECTION
 ahm <- raster("D:/MOVING/CLIMATE/CLIMATE_PROL_EU/Albers_2.5km_Normal_1961-1990_bioclim/wgs/ahm_wgs84.tif")
 ahm <- resample(ahm, b1, method="bilinear")
 ahm <- crop(ahm, study_site)
@@ -113,7 +115,6 @@ eref <- mask(eref, study_site)
 
 
 #### Soil property variables ####
-
 #Soil moisture
 moisture <- raster("D:/Dados de Solos/Soil Moisture Storage Capacity Derived from the Soil Map of the World/smax/w001001.adf")
 moisture <- resample(moisture, b1, method="bilinear")
@@ -127,3 +128,51 @@ pH <- resample(pH, b1, method="bilinear")
 pH <- crop(pH, study_site)
 pH <- mask(pH, study_site)
 #plot(pH)
+
+#Create high resolution raster stack
+high_res_preds <- stack(b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,
+               b18,b19,ahm,shm,nffd,eref,moisture,pH)
+
+#names(preds)
+#nlayers(preds)
+
+names(high_res_preds) <- c("bio1","bio2","bio3","bio4","bio5","bio6","bio7","bio8","bio9",
+                  "bio10","bio11","bio12","bio13","bio14","bio15","bio16","bio17",
+                  "bio18","bio19","ahm", "shm", "nffd", "eref","moisture","pH"
+)
+
+# 9.Predict
+predict_olive_D <- predict(M_olive_D,newdata=high_res_preds,filename='predicted_olive_D_current.img', overwrite = TRUE)
+predict_olive_W <- predict(M_olive_W,newdata=high_res_preds,filename='predicted_olive_W_current.img', overwrite = TRUE)
+predict_olive_WD <- predict(M_olive_WD,newdata=high_res_preds,filename='predicted_olive_WD_current.img', overwrite = TRUE)
+#
+predict_vine_D <- predict(M_vine_D,newdata=high_res_preds,filename='predicted_vine_D_current.img', overwrite = TRUE)
+predict_vine_W <- predict(M_vine_W,newdata=high_res_preds,filename='predicted_vine_W_current.img', overwrite = TRUE)
+predict_vine_WD <- predict(M_vine_WD,newdata=high_res_preds,filename='predicted_vine_WD_current.img', overwrite = TRUE)
+
+
+#10. Build ensemble
+ensemble_olive_D <- ensemble(M_olive_D,newdata=high_res_preds,filename='ensemble_olive_D_current.img',setting=list(method='weighted',stat='TSS'),overwrite=TRUE) 
+ensemble_olive_W <- ensemble(M_olive_W,newdata=high_res_preds,filename='ensemble_olive_W_current.img',setting=list(method='weighted',stat='TSS'),overwrite=TRUE) 
+ensemble_olive_WD <- ensemble(M_olive_WD,newdata=high_res_preds,filename='ensemble_olive_WD_current.img',setting=list(method='weighted',stat='TSS'),overwrite=TRUE) 
+#plot(ensemble_olive_D)
+#plot(ensemble_olive_W)
+#plot(ensemble_olive_WD)
+
+ensemble_vine_D <- ensemble(M_vine_D,newdata=high_res_preds,filename='ensemble_vine_D_current.img',setting=list(method='weighted',stat='TSS'),overwrite=TRUE) 
+ensemble_vine_W <- ensemble(M_vine_W,newdata=high_res_preds,filename='ensemble_vine_W_current.img',setting=list(method='weighted',stat='TSS'),overwrite=TRUE) 
+ensemble_vine_WD <- ensemble(M_vine_WD,newdata=high_res_preds,filename='ensemble_vine_WD_current.img',setting=list(method='weighted',stat='TSS'),overwrite=TRUE) 
+#plot(ensemble_vine_D)
+#plot(ensemble_vine_W)
+#plot(ensemble_vine_WD)
+
+rm(b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,
+   b18,b19,ahm,shm,nffd,eref,moisture,pH)
+rm(high_res_preds)
+
+###########################################################
+########################## FUTURE ######################### 
+###########################################################
+
+
+
