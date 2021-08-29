@@ -86,12 +86,6 @@ vif1@results
 #Using VIF to select the variables to consider in the model
 preds2 <- usdm::exclude(preds, vif1)
 
-rm(pred)
-rm(bio1,bio2,bio3,bio4,bio5,bio6,bio7,bio8,bio9,bio10,bio11,bio12,
-               bio13,bio14,bio15,bio16,bio17,bio18,bio19,
-               ahm_10X10,shm_10X10,nffd_10X10,eref_10X10,
-               ph_10X10)
-
 #Add columns for species occurrence (column with value 1)
 occ <- rep(1,nrow(olive_W@data))
 olive_W@data <- cbind(olive_W@data, occ)
@@ -129,6 +123,13 @@ data_olive_WD <- sdmData(train=olive_WD, predictors=preds2, bg=list(n=nrow(olive
 data_vine_W <- sdmData(train=vine_W, predictors=preds2, bg=list(n=nrow(vine_W@data),method='gRandom',remove=TRUE))
 data_vine_D <- sdmData(train=vine_D, predictors=preds2, bg=list(n=nrow(vine_D@data),method='gRandom',remove=TRUE))
 data_vine_WD <- sdmData(train=vine_WD, predictors=preds2, bg=list(n=nrow(vine_WD@data),method='gRandom',remove=TRUE))
+
+#Clean
+rm(preds)
+rm(bio1,bio2,bio3,bio4,bio5,bio6,bio7,bio8,bio9,bio10,bio11,bio12,
+   bio13,bio14,bio15,bio16,bio17,bio18,bio19,
+   ahm_10X10,shm_10X10,nffd_10X10,eref_10X10,
+   ph_10X10)
 
 #save
 save.image("olive_vines_RData")

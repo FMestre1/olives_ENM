@@ -166,9 +166,6 @@ ensemble_vine_WD <- ensemble(M_vine_WD,newdata=high_res_preds,filename='ensemble
 #plot(ensemble_vine_W)
 #plot(ensemble_vine_WD)
 
-rm(b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,
-   b18,b19,ahm,shm,nffd,eref,moisture,pH)
-rm(high_res_preds)
 
 ###########################################################
 ########################## FUTURE ######################### 
@@ -176,3 +173,12 @@ rm(high_res_preds)
 
 
 
+
+
+
+
+#Clean
+#current
+rm(b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,
+   b18,b19,ahm,shm,nffd,eref,moisture,pH)
+rm(high_res_preds)
