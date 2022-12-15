@@ -67,7 +67,7 @@ ggplot(hist_data_45, aes(x = combination, y = suitability, fill = combination)) 
 ###################
 
 #RCP85
-#current_DOP_current_SUIT <- raster::extract(suit_current, current_DOP)
+current_DOP_current_SUIT <- raster::extract(suit_current, current_DOP)
 current_DOP_future_SUIT_85 <- raster::extract(suit_rcp85, current_DOP)
 future_DOP_future_SUIT_85 <- raster::extract(suit_rcp85, RCP45_DOP)
 #
@@ -165,6 +165,9 @@ names(current_DOP_future_SUIT_85_DF)[2] <- "DOP"
 
 all_suits <- rbind(current_DOP_current_SUIT_DF, current_DOP_future_SUIT_45_DF, current_DOP_future_SUIT_85_DF)
 
+save(all_suits, file = "all_suits.RData")
+
+library(ggplot2)
 
 ggplot(all_suits, aes(DOP, suitability, fill=factor(scenario))) +
   geom_boxplot(outlier.colour = "lightgrey", outlier.size = 0.5) +   coord_flip() +
@@ -174,7 +177,7 @@ library(forcats)
 
 ggplot(all_suits, aes(fct_reorder(DOP, suitability), suitability, fill=factor(scenario))) +
   geom_boxplot(outlier.colour = "lightgrey", outlier.size = 0.5) +   coord_flip() +
-  scale_fill_brewer(palette="Greens") + 
+  scale_fill_brewer("Scenario", palette="Greens") + 
   ggtitle("PDO suitability in each scenario") +
   xlab("PDO") + ylab("Climatic suitability")
 
