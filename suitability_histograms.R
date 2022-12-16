@@ -125,15 +125,15 @@ length(current_DOP_future_SUIT_85)
 codes <- current_DOP@data$ID
 names <- current_DOP@data$NAME_0
 
+#write.csv(data.frame(codes,names), "names_code.csv", row.names=FALSE)
+
 names(current_DOP_current_SUIT) <- codes
 names(current_DOP_future_SUIT_45) <- codes
 names(current_DOP_future_SUIT_85) <- codes
 
-
 current_DOP_current_SUIT_DF <- data.frame()
 current_DOP_future_SUIT_45_DF <- data.frame()
 current_DOP_future_SUIT_85_DF <- data.frame()
-
 
 for(i in 1:length(current_DOP_current_SUIT)){
   
@@ -158,7 +158,6 @@ for(i in 1:length(current_DOP_future_SUIT_85)){
   current_DOP_future_SUIT_85_DF <- rbind(current_DOP_future_SUIT_85_DF, data.frame(vect3, names3))
   
 }
-
 
 current_DOP_current_SUIT_DF <- cbind(current_DOP_current_SUIT_DF, rep("current", nrow(current_DOP_current_SUIT_DF)))
 names(current_DOP_current_SUIT_DF)[3] <- "scenario"
@@ -210,5 +209,7 @@ raster::writeRaster(diff_rcp85)
 writeRaster(diff_rcp45, filename="diff_rcp45.tif", format="GTiff", overwrite=TRUE)
 writeRaster(diff_rcp85, filename="diff_rcp85.tif", format="GTiff", overwrite=TRUE)
 
-#Save
+#Load & Save
 save.image("olives_sdm.RData")
+load("olives_sdm.RData")
+
