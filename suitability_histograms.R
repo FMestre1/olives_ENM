@@ -105,7 +105,7 @@ current_future_both[current_future_both$combination == "current_DOP_future_SUIT_
 ggplot(current_future_both, aes(x = combination, y = suitability, fill = combination)) +
   geom_boxplot(outlier.shape = NA) +
   labs(
-    title = "Relation between suitability and POD location",
+    title = "Relation between suitability and PDO location",
     x = "Scenario",
     y = "Suitability"
   ) + 
