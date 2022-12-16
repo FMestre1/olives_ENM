@@ -210,4 +210,5 @@ raster::writeRaster(diff_rcp85)
 writeRaster(diff_rcp45, filename="diff_rcp45.tif", format="GTiff", overwrite=TRUE)
 writeRaster(diff_rcp85, filename="diff_rcp85.tif", format="GTiff", overwrite=TRUE)
 
-
+#Save
+save.image("olives_sdm.RData")
