@@ -15,18 +15,6 @@ current_DOP <- raster::shapefile("C:/Users/FMest/Documents/0. Artigos/Oliveiras_
 RCP45_DOP <- raster::shapefile("C:/Users/FMest/Documents/0. Artigos/Oliveiras_SDM/shapes_DOP/agregated_future_dop_RCP45.shp")#future DOP RCP45
 RCP85_DOP <- raster::shapefile("C:/Users/FMest/Documents/0. Artigos/Oliveiras_SDM/shapes_DOP/agregated_future_dop_RCP85.shp")#future DOP RCP85
 #
-#plot(suit_current)
-#plot(suit_rcp45)
-#plot(suit_rcp85)
-#
-#plot(suit_current)
-#plot(current_DOP, add=TRUE)
-#
-#plot(suit_rcp45)
-#plot(RCP45_DOP, add=TRUE)
-#
-#plot(suit_rcp85)
-#plot(RCP85_DOP, add=TRUE)
 #########################################
 #Extract values
 
@@ -105,16 +93,20 @@ gg2 <- ggplot(hist_data_85, aes(x = combination, y = suitability, fill = combina
 #New boxplot with three boxes
 #16-12-2022
 
-unique(current_future_both$combination)
+#unique(current_future_both$combination)
 hist_data_85_2 <- hist_data_85[hist_data_85$combination == "current_DOP_future_SUIT_85",]
 
 current_future_both <- rbind(hist_data_45, hist_data_85_2)
 
+current_future_both[current_future_both$combination == "current_DOP_current_SUIT",]$combination <- "current"
+current_future_both[current_future_both$combination == "current_DOP_future_SUIT_45",]$combination <- "RCP 4.5"
+current_future_both[current_future_both$combination == "current_DOP_future_SUIT_85",]$combination <- "RCP 8.5"
+
 ggplot(current_future_both, aes(x = combination, y = suitability, fill = combination)) +
   geom_boxplot(outlier.shape = NA) +
   labs(
-    title = "Relation between suitability and DOP location",
-    x = "DOP",
+    title = "Relation between suitability and POD location",
+    x = "Scenario",
     y = "Suitability"
   ) + 
   theme(legend.position = "none") +
