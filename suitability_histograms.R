@@ -19,14 +19,14 @@ RCP85_DOP <- raster::shapefile("C:/Users/FMest/Documents/0. Artigos/Oliveiras_SD
 #plot(suit_rcp45)
 #plot(suit_rcp85)
 #
-plot(suit_current)
-plot(current_DOP, add=TRUE)
+#plot(suit_current)
+#plot(current_DOP, add=TRUE)
 #
-plot(suit_rcp45)
-plot(RCP45_DOP, add=TRUE)
+#plot(suit_rcp45)
+#plot(RCP45_DOP, add=TRUE)
 #
-plot(suit_rcp85)
-plot(RCP85_DOP, add=TRUE)
+#plot(suit_rcp85)
+#plot(RCP85_DOP, add=TRUE)
 #########################################
 #Extract values
 
@@ -100,6 +100,26 @@ gg2 <- ggplot(hist_data_85, aes(x = combination, y = suitability, fill = combina
   scale_fill_brewer(palette = "Greens") +
   coord_cartesian(ylim = quantile(hist_data_45$suitability, c(0.07, 0.999), na.rm = TRUE))
 
+
+################################################################################
+#New boxplot with three boxes
+#16-12-2022
+
+unique(current_future_both$combination)
+hist_data_85_2 <- hist_data_85[hist_data_85$combination == "current_DOP_future_SUIT_85",]
+
+current_future_both <- rbind(hist_data_45, hist_data_85_2)
+
+ggplot(current_future_both, aes(x = combination, y = suitability, fill = combination)) +
+  geom_boxplot(outlier.shape = NA) +
+  labs(
+    title = "Relation between suitability and DOP location",
+    x = "DOP",
+    y = "Suitability"
+  ) + 
+  theme(legend.position = "none") +
+  scale_fill_brewer(palette = "Greens") +
+  coord_cartesian(ylim = quantile(current_future_both$suitability, c(0.07, 0.999), na.rm = TRUE))
 
 
 ################################################################################
@@ -182,5 +202,20 @@ ggplot(all_suits, aes(fct_reorder(DOP, suitability), suitability, fill=factor(sc
   xlab("PDO") + ylab("Climatic suitability")
 
 #saved in 1000 x 1000
+
+################################################################################
+#Plot and create difference rasters
+
+#suit_current
+#suit_rcp45
+#suit_rcp85
+
+diff_rcp85 <- (suit_rcp85 - suit_current)
+diff_rcp45 <- (suit_rcp45 - suit_current)
+
+raster::writeRaster(diff_rcp85)
+
+writeRaster(diff_rcp45, filename="diff_rcp45.tif", format="GTiff", overwrite=TRUE)
+writeRaster(diff_rcp85, filename="diff_rcp85.tif", format="GTiff", overwrite=TRUE)
 
 
