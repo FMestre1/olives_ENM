@@ -213,3 +213,41 @@ writeRaster(diff_rcp85, filename="diff_rcp85.tif", format="GTiff", overwrite=TRU
 save.image("olives_sdm.RData")
 load("olives_sdm.RData")
 
+################################################################################
+#Table with the median and min-max of suitability
+#based upon
+
+pdo <- unique(all_suits$DOP)
+
+table_suitability <- data.frame(pdo, NA, NA, NA, NA, NA, NA, NA, NA, NA)
+
+colnames(table_suitability) <- c("PDO code", "median_current", "min_current", "max_current",
+                            "median_RCP45", "min_RCP45", "max_RCP45",
+                            "median_RCP85", "min_RCP85", "max_RCP85"
+                            )
+
+View(table_suitability)
+
+for(i in 1:length(pdo)){
+  
+  table1 <- all_suits[all_suits$DOP == pdo[[i]],]
+  
+  suit_curr <- table1[table1$scenario == "current",]$suitability
+  suit_45 <- table1[table1$scenario == "rcp4.5",]$suitability
+  suit_85 <- table1[table1$scenario == "rcp8.5",]$suitability
+  
+  table_suitability[table_suitability$`PDO code` == pdo[[i]],]$median_current <- median(suit_curr, na.rm = TRUE)
+  table_suitability[table_suitability$`PDO code` == pdo[[i]],]$min_current <- min(suit_curr, na.rm = TRUE)
+  table_suitability[table_suitability$`PDO code` == pdo[[i]],]$max_current <- max(suit_curr, na.rm = TRUE)
+  table_suitability[table_suitability$`PDO code` == pdo[[i]],]$median_RCP45 <- median(suit_45, na.rm = TRUE)
+  table_suitability[table_suitability$`PDO code` == pdo[[i]],]$min_RCP45 <- min(suit_45, na.rm = TRUE)
+  table_suitability[table_suitability$`PDO code` == pdo[[i]],]$max_RCP45 <- max(suit_45, na.rm = TRUE)
+  table_suitability[table_suitability$`PDO code` == pdo[[i]],]$median_RCP85 <- median(suit_85, na.rm = TRUE)
+  table_suitability[table_suitability$`PDO code` == pdo[[i]],]$min_RCP85 <- min(suit_85, na.rm = TRUE)
+  table_suitability[table_suitability$`PDO code` == pdo[[i]],]$max_RCP85 <- max(suit_85, na.rm = TRUE)
+  
+  
+}
+
+write.csv(table_suitability, "table_suitability.csv", row.names=TRUE)
+
