@@ -113,6 +113,7 @@ ggplot(current_future_both, aes(x = combination, y = suitability, fill = combina
   scale_fill_brewer(palette = "Greens") +
   coord_cartesian(ylim = quantile(current_future_both$suitability, c(0.07, 0.999), na.rm = TRUE))
 
+#sent this bellow to edit.... near the other ggplot
 
 ################################################################################
 #                              DOP vs Suitability
@@ -186,13 +187,44 @@ ggplot(all_suits, aes(DOP, suitability, fill=factor(scenario))) +
 
 library(forcats)
 
+
+
 ggplot(all_suits, aes(fct_reorder(DOP, suitability), suitability, fill=factor(scenario))) +
   geom_boxplot(outlier.colour = "lightgrey", outlier.size = 0.5) +   coord_flip() +
   scale_fill_brewer("Scenario", palette="Greens") + 
   ggtitle("PDO suitability in each scenario") +
-  xlab("PDO") + ylab("Climatic suitability")
+  xlab("PDO") + ylab("Climatic suitability") +
+  theme(panel.background = element_rect(fill = "white"),
+        #panel.grid.minor=element_line(colour="lightgrey"),
+        panel.border = element_rect(fill = "transparent",
+                                    color = "black",
+                                    linewidth = 0.5)
+        ) #+
+  #scale_y_continuous(breaks = seq(from = 0, to = 1, by = 0.05), limits = c(0, 1))
 
-#saved in 1000 x 1000
+#saved in 1000 x 1500
+
+ggplot(current_future_both, aes(fct_reorder (combination, suitability),suitability, fill = combination)) +
+  coord_flip() +
+  geom_boxplot(outlier.shape = NA) +
+  labs(
+    title = "Relation between suitability and PDO location",
+    x = "Scenario",
+    y = "Suitability"
+  ) + 
+  theme(panel.background = element_rect(fill = "white"), 
+        panel.border = element_rect(fill = "transparent",
+                                    color = "grey",
+                                    linewidth = 0.5),
+        legend.position = "none",
+        #panel.grid.minor=element_line(colour="lightgrey")
+        ) +
+  scale_fill_brewer(palette = "Greens") +
+  scale_y_continuous(breaks = seq(from = 0.65, to = 0.95, by = 0.05), limits = c(0.65,0.95)
+                     )
+                     #+
+  #coord_cartesian(ylim = quantile(current_future_both$suitability, c(0.07, 0.999), na.rm = TRUE))
+
 
 ################################################################################
 #Plot and create difference rasters
