@@ -283,3 +283,25 @@ for(i in 1:length(pdo)){
 
 write.csv(table_suitability, "table_suitability.csv", row.names=TRUE)
 
+################################################################################
+
+#06-04-2023
+
+library(terra)
+
+dop2020 <- terra::rast("C:\\Users\\FMest\\Documents\\github\\olives_SDM\\sdmolives\\dop_20201.tif")
+dop2050_rco45 <- terra::rast("C:\\Users\\FMest\\Documents\\github\\olives_SDM\\sdmolives\\dop_rcp451.tif")
+dop2050_rco85 <- terra::rast("C:\\Users\\FMest\\Documents\\github\\olives_SDM\\sdmolives\\dop_RCP851.tif")
+
+plot(dop2020)
+plot(dop2050_rco45)
+plot(dop2050_rco85)
+
+dif_2020_2050_rcp45 <- dop2050_rco45 - dop2020
+dif_2020_2050_rcp85 <- dop2050_rco85 - dop2020
+
+plot(dif_2020_2050_rcp45)
+plot(dif_2020_2050_rcp85)
+
+terra::writeRaster(dif_2020_2050_rcp45, "dif_2020_2050_rcp45.tif")
+terra::writeRaster(dif_2020_2050_rcp85, "dif_2020_2050_rcp85.tif")
