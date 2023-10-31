@@ -3,136 +3,13 @@
 ######################### CURRENT ######################### 
 ###########################################################
 
-# 8. Load the variables with higher resolution to project the model
-
-#### Bioclimatic variables to project the model to (many not required, not in the model)
-#I'll load all just in case...
-
-b1 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_1.tif")
-b1 <- crop(b1, study_site)
-b1 <- mask(b1, study_site)
-#plot(b1)
-b2 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_2.tif")
-b2 <- crop(b2, study_site)
-b2 <- mask(b2, study_site)
-#plot(b2)
-b3 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_3.tif")
-b3 <- crop(b3, study_site)
-b3 <- mask(b3, study_site)
-#plot(b3)
-b4 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_4.tif")
-b4 <- crop(b4, study_site)
-b4 <- mask(b4, study_site)
-#plot(b4)
-b5 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_5.tif")
-b5 <- crop(b5, study_site)
-b5 <- mask(b5, study_site)
-#plot(b5)
-b6 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_6.tif")
-b6 <- crop(b6, study_site)
-b6 <- mask(b6, study_site)
-#plot(b6)
-b7 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_7.tif")
-b7 <- crop(b7, study_site)
-b7 <- mask(b7, study_site)
-#plot(b7)
-b8 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_8.tif")
-b8 <- crop(b8, study_site)
-b8 <- mask(b8, study_site)
-#plot(b8)
-b9 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_9.tif")
-b9 <- crop(b9, study_site)
-b9 <- mask(b9, study_site)
-#plot(b9)
-b10 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_10.tif")
-b10 <- crop(b10, study_site)
-b10 <- mask(b10, study_site)
-#plot(b10)
-b11 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_11.tif")
-b11 <- crop(b11, study_site)
-b11 <- mask(b11, study_site)
-#plot(b11)
-b12 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_12.tif")
-b12 <- crop(b12, study_site)
-b12 <- mask(b12, study_site)
-#plot(b12)
-b13 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_13.tif")
-b13 <- crop(b13, study_site)
-b13 <- mask(b13, study_site)
-#plot(b13)
-b14 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_14.tif")
-b14 <- crop(b14, study_site)
-b14 <- mask(b14, study_site)
-#plot(b14)
-b15 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_15.tif")
-b15 <- crop(b15, study_site)
-b15 <- mask(b15, study_site)
-#plot(b15)
-b16 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_16.tif")
-b16 <- crop(b16, study_site)
-b16 <- mask(b16, study_site)
-#plot(b16)
-b17 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_17.tif")
-b17 <- crop(b17, study_site)
-b17 <- mask(b17, study_site)
-#plot(b17)
-b18 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_18.tif")
-b18 <- crop(b18, study_site)
-b18 <- mask(b18, study_site)
-#plot(b18)
-b19 <- raster("D:/Dados climáticos/WorldClim 2.0/wc2.1_30s_bio/wc2.1_30s_bio_19.tif")
-b19 <- crop(b19, study_site)
-b19 <- mask(b19, study_site)
-#plot(b19)
-
-#Other climatic
-#Annual heat:moisture index (MAT+10)/(MAP/1000))
-ahm <- raster("D:/MOVING/CLIMATE/CLIMATE_PROL_EU/Albers_2.5km_Normal_1961-1990_bioclim/wgs/ahm_wgs84.tif")
-ahm <- resample(ahm, b1, method="bilinear")
-ahm <- crop(ahm, study_site)
-ahm <- mask(ahm, study_site)
-
-#Summer heat:moisture index ((MWMT)/(MSP/1000))
-shm <- raster("D:/MOVING/CLIMATE/CLIMATE_PROL_EU/Albers_2.5km_Normal_1961-1990_bioclim/wgs/shm_wgs84.tif")
-shm <- resample(shm, b1, method="bilinear")
-shm <- crop(shm, study_site)
-shm <- mask(shm, study_site)
-
-#Number of frost-free days
-nffd <- raster("D:/MOVING/CLIMATE/CLIMATE_PROL_EU/Albers_2.5km_Normal_1961-1990_bioclim/wgs/nffd_wgs84.tif")
-nffd <- resample(nffd, b1, method="bilinear")
-nffd <- crop(nffd, study_site)
-nffd <- mask(nffd, study_site)
-
-#Hargreaves reference evaporation
-eref <- raster("D:/MOVING/CLIMATE/CLIMATE_PROL_EU/Albers_2.5km_Normal_1961-1990_bioclim/wgs/eref_wgs84.tif")
-eref <- resample(eref, b1, method="bilinear")
-eref <- crop(eref, study_site)
-eref <- mask(eref, study_site)
-
-#soil pH
-pH <- raster("D:/MOVING/SOILS/SOIL_Ph/ph_wgs84.tif")
-pH <- resample(pH, b1, method="bilinear")
-pH <- crop(pH, study_site)
-pH <- mask(pH, study_site)
-#plot(pH)
-
-#Create high resolution raster stack
-high_res_preds <- stack(b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,
-                        b18,b19,ahm,shm,nffd,eref,pH)
-
-#names(preds)
-#nlayers(preds)
-
-names(high_res_preds) <- c("bio1","bio2","bio3","bio4","bio5","bio6","bio7","bio8","bio9",
-                           "bio10","bio11","bio12","bio13","bio14","bio15","bio16","bio17",
-                           "bio18","bio19","ahm", "shm", "nffd", "eref","pH"
-)
+# 8. Load the variables
+#loaded before as high_res_preds
 
 #Clean environment
 #current
-rm(b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,
-   b18,b19,ahm,shm,nffd,eref,pH)
+#rm(b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,
+#   b18,b19,ahm,shm,nffd,eref,pH)
 
 
 ###########################################################
@@ -140,369 +17,739 @@ rm(b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,
 ###########################################################
 #2050
 #Load variables from https://worldclim.org/data/cmip5_30s.html
+#https://sites.ualberta.ca/~ahamann/data/climateeu.html
 
-#ACCESS1-0 (AC)
-bio2 <- raster("")     
-bio3 <- raster("")       
-bio8 <- raster("")
-bio9  <- raster("")     
-bio18  <- raster("")     
-bio19  <- raster("")       
-ahm  <- raster("")      
-shm <- raster("")      
-nffd <- raster("")      
-pH <- raster("")
+######################## CCSM4 (CC) ########################
+#system("unzip ./2050/CC/rcp45/cc45bi50.zip -d ./2050/CC/rcp45/")
+#system("unzip ./2050/CC/rcp85/cc85bi50.zip -d ./2050/CC/rcp85/")
 
-#Create high resolution raster stack
-AC_vars <- stack( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-names(AC_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19","ahm", "shm", "nffd", "pH")
-AC_vars <- resample(AC_vars, b1, method="bilinear")
-AC_vars <- crop(AC_vars, study_site)
-AC_vars <- mask(AC_vars, study_site)
-#Clean
-rm( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
+########## RCP45 ########## 
+bio2_cc_45 <- raster("./2050/CC/rcp45/cc45bi502.tif")     
+bio3_cc_45 <- raster("./2050/CC/rcp45/cc45bi503.tif")       
+bio8_cc_45 <- raster("./2050/CC/rcp45/cc45bi508.tif")
+bio9_cc_45  <- raster("./2050/CC/rcp45/cc45bi509.tif")     
+bio18_cc_45  <- raster("./2050/CC/rcp45/cc45bi5018.tif")     
+bio19_cc_45  <- raster("./2050/CC/rcp45/cc45bi5019.tif")       
+ahm_cc_45  <- raster("./2050/CC/rcp45/AHM.asc") 
+shm_cc_45 <- raster("./2050/CC/rcp45/SHM.asc") 
+nffd_cc_45 <- raster("./2050/CC/rcp45/NFFD.asc")      
+#pH #Use allways the same pH raster
+pH <- raster("current_vars/ph_wgs84.tif")
 
+#Reproject
+ahm_cc_45 <- projectRaster(from = ahm_cc_45, to = bio19_cc_45, method="bilinear")
+shm_cc_45 <- projectRaster(from = shm_cc_45, to = bio19_cc_45, method="bilinear")
+nffd_cc_45 <- projectRaster(from = nffd_cc_45, to = bio19_cc_45, method="bilinear")
 
-#BCC-CSM1-1 (BC)
-bio2 <- raster("")     
-bio3 <- raster("")       
-bio8 <- raster("")
-bio9  <- raster("")     
-bio18  <- raster("")     
-bio19  <- raster("")       
-ahm  <- raster("")      
-shm <- raster("")      
-nffd <- raster("")      
-pH <- raster("")
-
-#Create high resolution raster stack
-BC_vars <- stack( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-names(BC_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19","ahm", "shm", "nffd", "pH")
-BC_vars <- resample(BC_vars, b1, method="bilinear")
-BC_vars <- crop(BC_vars, study_site)
-BC_vars <- mask(BC_vars, study_site)
-#Clean
-rm( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-
-
-#CCSM4 (CC)
-bio2 <- raster("")     
-bio3 <- raster("")       
-bio8 <- raster("")
-bio9  <- raster("")     
-bio18  <- raster("")     
-bio19  <- raster("")       
-ahm  <- raster("")      
-shm <- raster("")      
-nffd <- raster("")      
-pH <- raster("")
-
-#Create high resolution raster stack
-CC_vars <- stack( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-names(CC_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19","ahm", "shm", "nffd", "pH")
-CC_vars <- resample(CC_vars, b1, method="bilinear")
-CC_vars <- crop(CC_vars, study_site)
-CC_vars <- mask(CC_vars, study_site)
-#Clean
-rm( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
+#Cut
+pH <- resample(pH, bio2_cc_45, method="bilinear")
+pH <- crop(pH, study_site)
+pH <- mask(pH, study_site)
+#
+bio2_cc_45 <- crop(bio2_cc_45, study_site)
+bio2_cc_45 <- mask(bio2_cc_45, study_site)
+bio2_cc_45 <- bio2_cc_45/10
+#
+bio3_cc_45 <- crop(bio3_cc_45, study_site)
+bio3_cc_45 <- mask(bio3_cc_45, study_site)
+#
+bio8_cc_45 <- crop(bio8_cc_45, study_site)
+bio8_cc_45 <- mask(bio8_cc_45, study_site)
+bio8_cc_45 <- bio8_cc_45/10
+#
+bio9_cc_45 <- crop(bio9_cc_45, study_site)
+bio9_cc_45 <- mask(bio9_cc_45, study_site)
+bio9_cc_45 <- bio9_cc_45/10
+#
+bio18_cc_45 <- crop(bio18_cc_45, study_site)
+bio18_cc_45 <- mask(bio18_cc_45, study_site)
+#
+bio19_cc_45 <- crop(bio19_cc_45, study_site)
+bio19_cc_45 <- mask(bio19_cc_45, study_site)
+#
+ahm_cc_45 <- crop(ahm_cc_45, study_site)
+ahm_cc_45 <- mask(ahm_cc_45, study_site)
+#
+shm_cc_45 <- crop(shm_cc_45, study_site)
+shm_cc_45 <- mask(shm_cc_45, study_site)
+#
+nffd_cc_45 <- crop(nffd_cc_45, study_site)
+nffd_cc_45 <- mask(nffd_cc_45, study_site)
 
 
-#CNRM-CM5 (CN)	
-bio2 <- raster("")     
-bio3 <- raster("")       
-bio8 <- raster("")
-bio9  <- raster("")     
-bio18  <- raster("")     
-bio19  <- raster("")       
-ahm  <- raster("")      
-shm <- raster("")      
-nffd <- raster("")      
-pH <- raster("")
+#Create raster stack
+CC_rcp45_vars <- stack( bio2_cc_45, bio3_cc_45, bio8_cc_45, bio9_cc_45, 
+                  bio18_cc_45, bio19_cc_45, ahm_cc_45, shm_cc_45, 
+                  nffd_cc_45, pH)
 
-#Create high resolution raster stack
-CN_vars <- stack( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-names(CN_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19","ahm", "shm", "nffd", "pH")
-CN_vars <- resample(CN_vars, b1, method="bilinear")
-CN_vars <- crop(CN_vars, study_site)
-CN_vars <- mask(CN_vars, study_site)
-#Clean
-rm( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
+names(CC_rcp45_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19",
+                          "ahm", "shm", "nffd", "pH")
 
+#Clean environment
+rm( bio2_cc_45, bio3_cc_45, bio8_cc_45, bio9_cc_45, bio18_cc_45, bio19_cc_45, ahm_cc_45, 
+    shm_cc_45, nffd_cc_45)
 
-#GFDL-CM3	(GF)
-bio2 <- raster("")     
-bio3 <- raster("")       
-bio8 <- raster("")
-bio9  <- raster("")     
-bio18  <- raster("")     
-bio19  <- raster("")       
-ahm  <- raster("")      
-shm <- raster("")      
-nffd <- raster("")      
-pH <- raster("")
+########## RCP85 ########## 
+#CC_rcp85_vars
+bio2_cc_85 <- raster("./2050/CC/rcp85/cc85bi502.tif")     
+bio3_cc_85 <- raster("./2050/CC/rcp85/cc85bi503.tif")       
+bio8_cc_85 <- raster("./2050/CC/rcp85/cc85bi508.tif")
+bio9_cc_85  <- raster("./2050/CC/rcp85/cc85bi509.tif")     
+bio18_cc_85 <- raster("./2050/CC/rcp85/cc85bi5018.tif")     
+bio19_cc_85 <- raster("./2050/CC/rcp85/cc85bi5019.tif")       
+ahm_cc_85 <- raster("./2050/CC/rcp85/AHM.asc") 
+shm_cc_85 <- raster("./2050/CC/rcp85/SHM.asc") 
+nffd_cc_85 <- raster("./2050/CC/rcp85/NFFD.asc")      
 
-#Create high resolution raster stack
-GF_vars <- stack( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-names(GF_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19","ahm", "shm", "nffd", "pH")
-GF_vars <- resample(GF_vars, b1, method="bilinear")
-GF_vars <- crop(GF_vars, study_site)
-GF_vars <- mask(GF_vars, study_site)
-#Clean
-rm( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
+#Reproject
+ahm_cc_85 <- projectRaster(from = ahm_cc_85, to = bio19_cc_85, method="bilinear")
+shm_cc_85 <- projectRaster(from = shm_cc_85, to = bio19_cc_85, method="bilinear")
+nffd_cc_85 <- projectRaster(from = nffd_cc_85, to = bio19_cc_85, method="bilinear")
 
+#Cut
+bio2_cc_85 <- crop(bio2_cc_85, study_site)
+bio2_cc_85 <- mask(bio2_cc_85, study_site)
+bio2_cc_85 <- bio2_cc_85/10
+#
+bio3_cc_85 <- crop(bio3_cc_85, study_site)
+bio3_cc_85 <- mask(bio3_cc_85, study_site)
+#
+bio8_cc_85 <- crop(bio8_cc_85, study_site)
+bio8_cc_85 <- mask(bio8_cc_85, study_site)
+bio8_cc_85 <- bio8_cc_85/10
+#
+bio9_cc_85 <- crop(bio9_cc_85, study_site)
+bio9_cc_85 <- mask(bio9_cc_85, study_site)
+bio9_cc_85 <- bio9_cc_85/10
+#
+bio18_cc_85 <- crop(bio18_cc_85, study_site)
+bio18_cc_85 <- mask(bio18_cc_85, study_site)
+#
+bio19_cc_85 <- crop(bio19_cc_85, study_site)
+bio19_cc_85 <- mask(bio19_cc_85, study_site)
+#
+ahm_cc_85 <- crop(ahm_cc_85, study_site)
+ahm_cc_85 <- mask(ahm_cc_85, study_site)
+#
+shm_cc_85 <- crop(shm_cc_85, study_site)
+shm_cc_85 <- mask(shm_cc_85, study_site)
+#
+nffd_cc_85 <- crop(nffd_cc_85, study_site)
+nffd_cc_85 <- mask(nffd_cc_85, study_site)
 
-#GISS-E2-R	(GS)
-bio2 <- raster("")     
-bio3 <- raster("")       
-bio8 <- raster("")
-bio9  <- raster("")     
-bio18  <- raster("")     
-bio19  <- raster("")       
-ahm  <- raster("")      
-shm <- raster("")      
-nffd <- raster("")      
-pH <- raster("")
+#Create raster stack
+CC_rcp85_vars <- stack( bio2_cc_85, bio3_cc_85, bio8_cc_85, bio9_cc_85, 
+                        bio18_cc_85, bio19_cc_85, ahm_cc_85, shm_cc_85, 
+                        nffd_cc_85, pH)
+names(CC_rcp85_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19",
+                          "ahm", "shm", "nffd", "pH")
 
-#Create high resolution raster stack
-GS_vars <- stack( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-names(GS_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19","ahm", "shm", "nffd", "pH")
-GS_vars <- resample(GS_vars, b1, method="bilinear")
-GS_vars <- crop(GS_vars, study_site)
-GS_vars <- mask(GS_vars, study_site)
-#Clean
-rm( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-
-
-#HadGEM2-AO	(HD)
-bio2 <- raster("")     
-bio3 <- raster("")       
-bio8 <- raster("")
-bio9  <- raster("")     
-bio18  <- raster("")     
-bio19  <- raster("")       
-ahm  <- raster("")      
-shm <- raster("")      
-nffd <- raster("")      
-pH <- raster("")
-
-#Create high resolution raster stack
-HD_vars <- stack( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-names(HD_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19","ahm", "shm", "nffd", "pH")
-HD_vars <- resample(HD_vars, b1, method="bilinear")
-HD_vars <- crop(HD_vars, study_site)
-HD_vars <- mask(HD_vars, study_site)
-#Clean
-rm( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
+#Clean environment
+rm( bio2_cc_85, bio3_cc_85, bio8_cc_85, bio9_cc_85, bio18_cc_85, bio19_cc_85, ahm_cc_85, 
+    shm_cc_85, nffd_cc_85)
 
 
-#HadGEM2-CC	(HG)
-bio2 <- raster("")     
-bio3 <- raster("")       
-bio8 <- raster("")
-bio9  <- raster("")     
-bio18  <- raster("")     
-bio19  <- raster("")       
-ahm  <- raster("")      
-shm <- raster("")      
-nffd <- raster("")      
-pH <- raster("")
+######################## CNRM-CM5 (CN) ######################## 
+#CN_rcp45_vars
+#CN_rcp85_vars
+system("unzip ./2050/CN/rcp45/cn45bi50.zip -d ./2050/CN/rcp45/")
+system("unzip ./2050/CN/rcp85/cn85bi50.zip -d ./2050/CN/rcp85/")
 
-#Create high resolution raster stack
-HG_vars <- stack( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-names(HG_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19","ahm", "shm", "nffd", "pH")
-HG_vars <- resample(HG_vars, b1, method="bilinear")
-HG_vars <- crop(HG_vars, study_site)
-HG_vars <- mask(HG_vars, study_site)
-#Clean
-rm( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
+########## RCP45 ########## 
+#AHM and SHM have problems!
+########## RCP85 ########## 
+#AHM and SHM have problems!
 
-#HadGEM2-ES	(HE)
-bio2 <- raster("")     
-bio3 <- raster("")       
-bio8 <- raster("")
-bio9  <- raster("")     
-bio18  <- raster("")     
-bio19  <- raster("")       
-ahm  <- raster("")      
-shm <- raster("")      
-nffd <- raster("")      
-pH <- raster("")
+######################## GFDL-CM3	(GF) ######################## 
 
-#Create high resolution raster stack
-HE_vars <- stack( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-names(HE_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19","ahm", "shm", "nffd", "pH")
-HE_vars <- resample(HE_vars, b1, method="bilinear")
-HE_vars <- crop(HE_vars, study_site)
-HE_vars <- mask(HE_vars, study_site)
-#Clean
-rm( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
+########## RCP45 ########## 
+bio2_gf_45 <- raster("./2050/GF/rcp45/gf45bi502.tif")     
+bio3_gf_45 <- raster("./2050/GF/rcp45/gf45bi503.tif")       
+bio8_gf_45 <- raster("./2050/GF/rcp45/gf45bi508.tif")
+bio9_gf_45  <- raster("./2050/GF/rcp45/gf45bi509.tif")     
+bio18_gf_45 <- raster("./2050/GF/rcp45/gf45bi5018.tif")     
+bio19_gf_45 <- raster("./2050/GF/rcp45/gf45bi5019.tif")       
+ahm_gf_45 <- raster("./2050/GF/rcp45/AHM.asc") 
+shm_gf_45 <- raster("./2050/GF/rcp45/SHM.asc") 
+nffd_gf_45 <- raster("./2050/GF/rcp45/NFFD.asc")      
 
-#INMCM4 (IN)
-bio2 <- raster("")     
-bio3 <- raster("")       
-bio8 <- raster("")
-bio9  <- raster("")     
-bio18  <- raster("")     
-bio19  <- raster("")       
-ahm  <- raster("")      
-shm <- raster("")      
-nffd <- raster("")      
-pH <- raster("")
+#Reproject
+ahm_gf_45 <- projectRaster(from = ahm_gf_45, to = bio19_gf_45, method="bilinear")
+shm_gf_45 <- projectRaster(from = shm_gf_45, to = bio19_gf_45, method="bilinear")
+nffd_gf_45 <- projectRaster(from = nffd_gf_45, to = bio19_gf_45, method="bilinear")
 
-#Create high resolution raster stack
-IN_vars <- stack( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-names(IN_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19","ahm", "shm", "nffd", "pH")
-IN_vars <- resample(IN_vars, b1, method="bilinear")
-IN_vars <- crop(IN_vars, study_site)
-IN_vars <- mask(IN_vars, study_site)
-#Clean
-rm( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
+#Cut
+bio2_gf_45 <- crop(bio2_gf_45, study_site)
+bio2_gf_45 <- mask(bio2_gf_45, study_site)
+bio2_gf_45 <- bio2_gf_45/10
+#
+bio3_gf_45 <- crop(bio3_gf_45, study_site)
+bio3_gf_45 <- mask(bio3_gf_45, study_site)
+#
+bio8_gf_45 <- crop(bio8_gf_45, study_site)
+bio8_gf_45 <- mask(bio8_gf_45, study_site)
+bio8_gf_45 <- bio8_gf_45/10
+#
+bio9_gf_45 <- crop(bio9_gf_45, study_site)
+bio9_gf_45 <- mask(bio9_gf_45, study_site)
+bio9_gf_45 <- bio9_gf_45/10
+#
+bio18_gf_45 <- crop(bio18_gf_45, study_site)
+bio18_gf_45 <- mask(bio18_gf_45, study_site)
+#
+bio19_gf_45 <- crop(bio19_gf_45, study_site)
+bio19_gf_45 <- mask(bio19_gf_45, study_site)
+#
+ahm_gf_45 <- crop(ahm_gf_45, study_site)
+ahm_gf_45 <- mask(ahm_gf_45, study_site)
+#
+shm_gf_45 <- crop(shm_gf_45, study_site)
+shm_gf_45 <- mask(shm_gf_45, study_site)
+#
+nffd_gf_45 <- crop(nffd_gf_45, study_site)
+nffd_gf_45 <- mask(nffd_gf_45, study_site)
 
-#IPSL-CM5A-LR	(IP)
-bio2 <- raster("")     
-bio3 <- raster("")       
-bio8 <- raster("")
-bio9  <- raster("")     
-bio18  <- raster("")     
-bio19  <- raster("")       
-ahm  <- raster("")      
-shm <- raster("")      
-nffd <- raster("")      
-pH <- raster("")
+#Create raster stack
+GF_rcp45_vars <- stack( bio2_gf_45, bio3_gf_45, bio8_gf_45, bio9_gf_45, 
+                        bio18_gf_45, bio19_gf_45, ahm_gf_45, shm_gf_45, 
+                        nffd_gf_45, pH)
+names(GF_rcp45_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19",
+                          "ahm", "shm", "nffd", "pH")
 
-#Create high resolution raster stack
-IP_vars <- stack( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-names(IP_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19","ahm", "shm", "nffd", "pH")
-IP_vars <- resample(IP_vars, b1, method="bilinear")
-IP_vars <- crop(IP_vars, study_site)
-IP_vars <- mask(IP_vars, study_site)
-#Clean
-rm( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
+#Clean environment
+rm( bio2_gf_45, bio3_gf_45, bio8_gf_45, bio9_gf_45, bio18_gf_45, bio19_gf_45, ahm_gf_45, 
+    shm_gf_45, nffd_gf_45)
 
-#MIROC-ESM-CHEM (MI)
-bio2 <- raster("")     
-bio3 <- raster("")       
-bio8 <- raster("")
-bio9  <- raster("")     
-bio18  <- raster("")     
-bio19  <- raster("")       
-ahm  <- raster("")      
-shm <- raster("")      
-nffd <- raster("")      
-pH <- raster("")
+########## RCP85 ########## 
+bio2_gf_85 <- raster("./2050/GF/rcp85/gf85bi502.tif")     
+bio3_gf_85 <- raster("./2050/GF/rcp85/gf85bi503.tif")       
+bio8_gf_85 <- raster("./2050/GF/rcp85/gf85bi508.tif")
+bio9_gf_85  <- raster("./2050/GF/rcp85/gf85bi509.tif")     
+bio18_gf_85 <- raster("./2050/GF/rcp85/gf85bi5018.tif")     
+bio19_gf_85 <- raster("./2050/GF/rcp85/gf85bi5019.tif")       
+ahm_gf_85 <- raster("./2050/GF/rcp85/AHM.asc") 
+shm_gf_85 <- raster("./2050/GF/rcp85/SHM.asc") 
+nffd_gf_85 <- raster("./2050/GF/rcp85/NFFD.asc")      
 
-#Create high resolution raster stack
-MI_vars <- stack( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-names(MI_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19","ahm", "shm", "nffd", "pH")
-MI_vars <- resample(MI_vars, b1, method="bilinear")
-MI_vars <- crop(MI_vars, study_site)
-MI_vars <- mask(MI_vars, study_site)
-#Clean
-rm( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
+#Reproject
+ahm_gf_85 <- projectRaster(from = ahm_gf_85, to = bio19_gf_85, method="bilinear")
+shm_gf_85 <- projectRaster(from = shm_gf_85, to = bio19_gf_85, method="bilinear")
+nffd_gf_85 <- projectRaster(from = nffd_gf_85, to = bio19_gf_85, method="bilinear")
 
-#MIROC-ESM (MR)
-bio2 <- raster("")     
-bio3 <- raster("")       
-bio8 <- raster("")
-bio9  <- raster("")     
-bio18  <- raster("")     
-bio19  <- raster("")       
-ahm  <- raster("")      
-shm <- raster("")      
-nffd <- raster("")      
-pH <- raster("")
+#Cut
+bio2_gf_85 <- crop(bio2_gf_85, study_site)
+bio2_gf_85 <- mask(bio2_gf_85, study_site)
+bio2_gf_85 <- bio2_gf_85/10
+#
+bio3_gf_85 <- crop(bio3_gf_85, study_site)
+bio3_gf_85 <- mask(bio3_gf_85, study_site)
+#
+bio8_gf_85 <- crop(bio8_gf_85, study_site)
+bio8_gf_85 <- mask(bio8_gf_85, study_site)
+bio8_gf_85 <- bio8_gf_85/10
+#
+bio9_gf_85 <- crop(bio9_gf_85, study_site)
+bio9_gf_85 <- mask(bio9_gf_85, study_site)
+bio9_gf_85 <- bio9_gf_85/10
+#
+bio18_gf_85 <- crop(bio18_gf_85, study_site)
+bio18_gf_85 <- mask(bio18_gf_85, study_site)
+#
+bio19_gf_85 <- crop(bio19_gf_85, study_site)
+bio19_gf_85 <- mask(bio19_gf_85, study_site)
+#
+ahm_gf_85 <- crop(ahm_gf_85, study_site)
+ahm_gf_85 <- mask(ahm_gf_85, study_site)
+#
+shm_gf_85 <- crop(shm_gf_85, study_site)
+shm_gf_85 <- mask(shm_gf_85, study_site)
+#
+nffd_gf_85 <- crop(nffd_gf_85, study_site)
+nffd_gf_85 <- mask(nffd_gf_85, study_site)
 
-#Create high resolution raster stack
-MR_vars <- stack( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-names(MR_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19","ahm", "shm", "nffd", "pH")
-MR_vars <- resample(MR_vars, b1, method="bilinear")
-MR_vars <- crop(MR_vars, study_site)
-MR_vars <- mask(MR_vars, study_site)
-#Clean
-rm( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
+#Create raster stack
+GF_rcp85_vars <- stack( bio2_gf_85, bio3_gf_85, bio8_gf_85, bio9_gf_85, 
+                        bio18_gf_85, bio19_gf_85, ahm_gf_85, shm_gf_85, 
+                        nffd_gf_85, pH)
+names(GF_rcp85_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19",
+                          "ahm", "shm", "nffd", "pH")
 
-#MIROC5 (MC)
-bio2 <- raster("")     
-bio3 <- raster("")       
-bio8 <- raster("")
-bio9  <- raster("")     
-bio18  <- raster("")     
-bio19  <- raster("")       
-ahm  <- raster("")      
-shm <- raster("")      
-nffd <- raster("")      
-pH <- raster("")
+#Clean environment
+rm( bio2_gf_85, bio3_gf_85, bio8_gf_85, bio9_gf_85, bio18_gf_85, bio19_gf_85, ahm_gf_85, 
+    shm_gf_85, nffd_gf_85)
 
-#Create high resolution raster stack
-MC_vars <- stack( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-names(MC_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19","ahm", "shm", "nffd", "pH")
-MC_vars <- resample(MC_vars, b1, method="bilinear")
-MC_vars <- crop(MC_vars, study_site)
-MC_vars <- mask(MC_vars, study_site)
-#Clean
-rm( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
+######################## HadGEM2-ES	(HE) ######################## 
+
+########## RCP45 ########## 
+bio2_he_45 <- raster("./2050/HE/rcp45/he45bi502.tif")     
+bio3_he_45 <- raster("./2050/HE/rcp45/he45bi503.tif")       
+bio8_he_45 <- raster("./2050/HE/rcp45/he45bi508.tif")
+bio9_he_45  <- raster("./2050/HE/rcp45/he45bi509.tif")     
+bio18_he_45 <- raster("./2050/HE/rcp45/he45bi5018.tif")     
+bio19_he_45 <- raster("./2050/HE/rcp45/he45bi5019.tif")       
+ahm_he_45 <- raster("./2050/HE/rcp45/AHM.asc") 
+shm_he_45 <- raster("./2050/HE/rcp45/SHM.asc") 
+nffd_he_45 <- raster("./2050/HE/rcp45/NFFD.asc")      
+
+#Reproject
+ahm_he_45 <- projectRaster(from = ahm_he_45, to = bio19_he_45, method="bilinear")
+shm_he_45 <- projectRaster(from = shm_he_45, to = bio19_he_45, method="bilinear")
+nffd_he_45 <- projectRaster(from = nffd_he_45, to = bio19_he_45, method="bilinear")
+
+#Cut
+bio2_he_45 <- crop(bio2_he_45, study_site)
+bio2_he_45 <- mask(bio2_he_45, study_site)
+bio2_he_45 <- bio2_he_45/10
+#
+bio3_he_45 <- crop(bio3_he_45, study_site)
+bio3_he_45 <- mask(bio3_he_45, study_site)
+#
+bio8_he_45 <- crop(bio8_he_45, study_site)
+bio8_he_45 <- mask(bio8_he_45, study_site)
+bio8_he_45 <- bio8_he_45/10
+#
+bio9_he_45 <- crop(bio9_he_45, study_site)
+bio9_he_45 <- mask(bio9_he_45, study_site)
+bio9_he_45 <- bio9_he_45/10
+#
+bio18_he_45 <- crop(bio18_he_45, study_site)
+bio18_he_45 <- mask(bio18_he_45, study_site)
+#
+bio19_he_45 <- crop(bio19_he_45, study_site)
+bio19_he_45 <- mask(bio19_he_45, study_site)
+#
+ahm_he_45 <- crop(ahm_he_45, study_site)
+ahm_he_45 <- mask(ahm_he_45, study_site)
+#
+shm_he_45 <- crop(shm_he_45, study_site)
+shm_he_45 <- mask(shm_he_45, study_site)
+#
+nffd_he_45 <- crop(nffd_he_45, study_site)
+nffd_he_45 <- mask(nffd_he_45, study_site)
+
+#Create raster stack
+HE_rcp45_vars <- stack( bio2_he_45, bio3_he_45, bio8_he_45, bio9_he_45, 
+                        bio18_he_45, bio19_he_45, ahm_he_45, shm_he_45, 
+                        nffd_he_45, pH)
+names(HE_rcp45_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19",
+                          "ahm", "shm", "nffd", "pH")
+
+#Clean environment
+rm( bio2_he_45, bio3_he_45, bio8_he_45, bio9_he_45, bio18_he_45, bio19_he_45, ahm_he_45, 
+    shm_he_45, nffd_he_45)
+
+########## RCP85 ########## 
+bio2_he_85 <- raster("./2050/HE/rcp85/he85bi502.tif")     
+bio3_he_85 <- raster("./2050/HE/rcp85/he85bi503.tif")       
+bio8_he_85 <- raster("./2050/HE/rcp85/he85bi508.tif")
+bio9_he_85  <- raster("./2050/HE/rcp85/he85bi509.tif")     
+bio18_he_85 <- raster("./2050/HE/rcp85/he85bi5018.tif")     
+bio19_he_85 <- raster("./2050/HE/rcp85/he85bi5019.tif")       
+ahm_he_85 <- raster("./2050/HE/rcp85/AHM.asc") 
+shm_he_85 <- raster("./2050/HE/rcp85/SHM.asc") 
+nffd_he_85 <- raster("./2050/HE/rcp85/NFFD.asc")      
+
+#Reproject
+ahm_he_85 <- projectRaster(from = ahm_he_85, to = bio19_he_85, method="bilinear")
+shm_he_85 <- projectRaster(from = shm_he_85, to = bio19_he_85, method="bilinear")
+nffd_he_85 <- projectRaster(from = nffd_he_85, to = bio19_he_85, method="bilinear")
+
+#Cut
+bio2_he_85 <- crop(bio2_he_85, study_site)
+bio2_he_85 <- mask(bio2_he_85, study_site)
+bio2_he_85 <- bio2_he_85/10
+#
+bio3_he_85 <- crop(bio3_he_85, study_site)
+bio3_he_85 <- mask(bio3_he_85, study_site)
+#
+bio8_he_85 <- crop(bio8_he_85, study_site)
+bio8_he_85 <- mask(bio8_he_85, study_site)
+bio8_he_85 <- bio8_he_85/10
+#
+bio9_he_85 <- crop(bio9_he_85, study_site)
+bio9_he_85 <- mask(bio9_he_85, study_site)
+bio9_he_85 <- bio9_he_85/10
+#
+bio18_he_85 <- crop(bio18_he_85, study_site)
+bio18_he_85 <- mask(bio18_he_85, study_site)
+#
+bio19_he_85 <- crop(bio19_he_85, study_site)
+bio19_he_85 <- mask(bio19_he_85, study_site)
+#
+ahm_he_85 <- crop(ahm_he_85, study_site)
+ahm_he_85 <- mask(ahm_he_85, study_site)
+#
+shm_he_85 <- crop(shm_he_85, study_site)
+shm_he_85 <- mask(shm_he_85, study_site)
+#
+nffd_he_85 <- crop(nffd_he_85, study_site)
+nffd_he_85 <- mask(nffd_he_85, study_site)
+
+#Create raster stack
+HE_rcp85_vars <- stack( bio2_he_85, bio3_he_85, bio8_he_85, bio9_he_85, 
+                        bio18_he_85, bio19_he_85, ahm_he_85, shm_he_85, 
+                        nffd_he_85, pH)
+names(HE_rcp85_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19",
+                          "ahm", "shm", "nffd", "pH")
+
+#Clean environment
+rm( bio2_he_85, bio3_he_85, bio8_he_85, bio9_he_85, bio18_he_85, bio19_he_85, ahm_he_85, 
+    shm_he_85, nffd_he_85)
 
 
-#MPI-ESM-LR	(MP)
-bio2 <- raster("")     
-bio3 <- raster("")       
-bio8 <- raster("")
-bio9  <- raster("")     
-bio18  <- raster("")     
-bio19  <- raster("")       
-ahm  <- raster("")      
-shm <- raster("")      
-nffd <- raster("")      
-pH <- raster("")
+######################## INMCM4 (IN) ######################## 
 
-#Create high resolution raster stack
-MP_vars <- stack( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-names(MP_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19","ahm", "shm", "nffd", "pH")
-MP_vars <- resample(MP_vars, b1, method="bilinear")
-MP_vars <- crop(MP_vars, study_site)
-MP_vars <- mask(MP_vars)
-#Clean
-rm( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
+########## RCP45 ########## 
+bio2_in_45 <- raster("./2050/IN/rcp45/in45bi502.tif")     
+bio3_in_45 <- raster("./2050/IN/rcp45/in45bi503.tif")       
+bio8_in_45 <- raster("./2050/IN/rcp45/in45bi508.tif")
+bio9_in_45  <- raster("./2050/IN/rcp45/in45bi509.tif")     
+bio18_in_45 <- raster("./2050/IN/rcp45/in45bi5018.tif")     
+bio19_in_45 <- raster("./2050/IN/rcp45/in45bi5019.tif")       
+ahm_in_45 <- raster("./2050/IN/rcp45/AHM.asc") 
+shm_in_45 <- raster("./2050/IN/rcp45/SHM.asc") 
+nffd_in_45 <- raster("./2050/IN/rcp45/NFFD.asc")      
 
-#MRI-CGCM3	(MG)
-bio2 <- raster("")     
-bio3 <- raster("")       
-bio8 <- raster("")
-bio9  <- raster("")     
-bio18  <- raster("")     
-bio19  <- raster("")       
-ahm  <- raster("")      
-shm <- raster("")      
-nffd <- raster("")      
-pH <- raster("")
+#Reproject
+ahm_in_45 <- projectRaster(from = ahm_in_45, to = bio19_in_45, method="bilinear")
+shm_in_45 <- projectRaster(from = shm_in_45, to = bio19_in_45, method="bilinear")
+nffd_in_45 <- projectRaster(from = nffd_in_45, to = bio19_in_45, method="bilinear")
 
-#Create high resolution raster stack
-MG_vars <- stack( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-names(MG_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19","ahm", "shm", "nffd", "pH")
-MG_vars <- resample(MG_vars, b1, method="bilinear")
-MG_vars <- crop(MG_vars, study_site)
-MG_vars <- mask(MG_vars)
-#Clean
-rm( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
+#Cut
+bio2_in_45 <- crop(bio2_in_45, study_site)
+bio2_in_45 <- mask(bio2_in_45, study_site)
+bio2_in_45 <- bio2_in_45/10
+#
+bio3_in_45 <- crop(bio3_in_45, study_site)
+bio3_in_45 <- mask(bio3_in_45, study_site)
+#
+bio8_in_45 <- crop(bio8_in_45, study_site)
+bio8_in_45 <- mask(bio8_in_45, study_site)
+bio8_in_45 <- bio8_in_45/10
+#
+bio9_in_45 <- crop(bio9_in_45, study_site)
+bio9_in_45 <- mask(bio9_in_45, study_site)
+bio9_in_45 <- bio9_in_45/10
+#
+bio18_in_45 <- crop(bio18_in_45, study_site)
+bio18_in_45 <- mask(bio18_in_45, study_site)
+#
+bio19_in_45 <- crop(bio19_in_45, study_site)
+bio19_in_45 <- mask(bio19_in_45, study_site)
+#
+ahm_in_45 <- crop(ahm_in_45, study_site)
+ahm_in_45 <- mask(ahm_in_45, study_site)
+#
+shm_in_45 <- crop(shm_in_45, study_site)
+shm_in_45 <- mask(shm_in_45, study_site)
+#
+nffd_in_45 <- crop(nffd_in_45, study_site)
+nffd_in_45 <- mask(nffd_in_45, study_site)
 
-#NorESM1-M	(NO)
-bio2 <- raster("")     
-bio3 <- raster("")       
-bio8 <- raster("")
-bio9  <- raster("")     
-bio18  <- raster("")     
-bio19  <- raster("")       
-ahm  <- raster("")      
-shm <- raster("")      
-nffd <- raster("")      
-pH <- raster("")
+#Create raster stack
+IN_rcp45_vars <- stack( bio2_in_45, bio3_in_45, bio8_in_45, bio9_in_45, 
+                        bio18_in_45, bio19_in_45, ahm_in_45, shm_in_45, 
+                        nffd_in_45, pH)
+names(IN_rcp45_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19",
+                          "ahm", "shm", "nffd", "pH")
 
-#Create high resolution raster stack
-NO_vars <- stack( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
-names(NO_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19","ahm", "shm", "nffd", "pH")
-NO_vars <- resample(NO_vars, b1, method="bilinear")
-NO_vars <- crop(NO_vars, study_site)
-NO_vars <- mask(NO_vars)
-#Clean
-rm( bio2, bio3, bio8, bio9, bio18, bio19, ahm, shm, nffd, pH)
+#Clean environment
+rm( bio2_in_45, bio3_in_45, bio8_in_45, bio9_in_45, bio18_in_45, bio19_in_45, ahm_in_45, 
+    shm_in_45, nffd_in_45)
+
+########## RCP85 ########## 
+bio2_in_85 <- raster("./2050/IN/rcp85/in85bi502.tif")     
+bio3_in_85 <- raster("./2050/IN/rcp85/in85bi503.tif")       
+bio8_in_85 <- raster("./2050/IN/rcp85/in85bi508.tif")
+bio9_in_85  <- raster("./2050/IN/rcp85/in85bi509.tif")     
+bio18_in_85 <- raster("./2050/IN/rcp85/in85bi5018.tif")     
+bio19_in_85 <- raster("./2050/IN/rcp85/in85bi5019.tif")       
+ahm_in_85 <- raster("./2050/IN/rcp85/AHM.asc") 
+shm_in_85 <- raster("./2050/IN/rcp85/SHM.asc") 
+nffd_in_85 <- raster("./2050/IN/rcp85/NFFD.asc")      
+
+#Reproject
+ahm_in_85 <- projectRaster(from = ahm_in_85, to = bio19_in_85, method="bilinear")
+shm_in_85 <- projectRaster(from = shm_in_85, to = bio19_in_85, method="bilinear")
+nffd_in_85 <- projectRaster(from = nffd_in_85, to = bio19_in_85, method="bilinear")
+
+#Cut
+bio2_in_85 <- crop(bio2_in_85, study_site)
+bio2_in_85 <- mask(bio2_in_85, study_site)
+bio2_in_85 <- bio2_in_85/10
+#
+bio3_in_85 <- crop(bio3_in_85, study_site)
+bio3_in_85 <- mask(bio3_in_85, study_site)
+#
+bio8_in_85 <- crop(bio8_in_85, study_site)
+bio8_in_85 <- mask(bio8_in_85, study_site)
+bio8_in_85 <- bio8_in_85/10
+#
+bio9_in_85 <- crop(bio9_in_85, study_site)
+bio9_in_85 <- mask(bio9_in_85, study_site)
+bio9_in_85 <- bio9_in_85/10
+#
+bio18_in_85 <- crop(bio18_in_85, study_site)
+bio18_in_85 <- mask(bio18_in_85, study_site)
+#
+bio19_in_85 <- crop(bio19_in_85, study_site)
+bio19_in_85 <- mask(bio19_in_85, study_site)
+#
+ahm_in_85 <- crop(ahm_in_85, study_site)
+ahm_in_85 <- mask(ahm_in_85, study_site)
+#
+shm_in_85 <- crop(shm_in_85, study_site)
+shm_in_85 <- mask(shm_in_85, study_site)
+#
+nffd_in_85 <- crop(nffd_in_85, study_site)
+nffd_in_85 <- mask(nffd_in_85, study_site)
+
+#Create raster stack
+IN_rcp85_vars <- stack( bio2_in_85, bio3_in_85, bio8_in_85, bio9_in_85, 
+                        bio18_in_85, bio19_in_85, ahm_in_85, shm_in_85, 
+                        nffd_in_85, pH)
+names(IN_rcp85_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19",
+                          "ahm", "shm", "nffd", "pH")
+
+#Clean environment
+rm( bio2_in_85, bio3_in_85, bio8_in_85, bio9_in_85, bio18_in_85, bio19_in_85, ahm_in_85, 
+    shm_in_85, nffd_in_85) 
+
+
+######################## IPSL-CM5A-LR	(IP) ######################## 
+
+########## RCP45 ########## 
+bio2_ip_45 <- raster("./2050/IP/rcp45/ip45bi502.tif")     
+bio3_ip_45 <- raster("./2050/IP/rcp45/ip45bi503.tif")       
+bio8_ip_45 <- raster("./2050/IP/rcp45/ip45bi508.tif")
+bio9_ip_45  <- raster("./2050/IP/rcp45/ip45bi509.tif")     
+bio18_ip_45 <- raster("./2050/IP/rcp45/ip45bi5018.tif")     
+bio19_ip_45 <- raster("./2050/IP/rcp45/ip45bi5019.tif")       
+ahm_ip_45 <- raster("./2050/IP/rcp45/AHM.asc") 
+shm_ip_45 <- raster("./2050/IP/rcp45/SHM.asc") 
+nffd_ip_45 <- raster("./2050/IP/rcp45/NFFD.asc")      
+
+#Reproject
+ahm_ip_45 <- projectRaster(from = ahm_ip_45, to = bio19_ip_45, method="bilinear")
+shm_ip_45 <- projectRaster(from = shm_ip_45, to = bio19_ip_45, method="bilinear")
+nffd_ip_45 <- projectRaster(from = nffd_ip_45, to = bio19_ip_45, method="bilinear")
+
+#Cut
+bio2_ip_45 <- crop(bio2_ip_45, study_site)
+bio2_ip_45 <- mask(bio2_ip_45, study_site)
+bio2_ip_45 <- bio2_ip_45/10
+#
+bio3_ip_45 <- crop(bio3_ip_45, study_site)
+bio3_ip_45 <- mask(bio3_ip_45, study_site)
+#
+bio8_ip_45 <- crop(bio8_ip_45, study_site)
+bio8_ip_45 <- mask(bio8_ip_45, study_site)
+bio8_ip_45 <- bio8_ip_45/10
+#
+bio9_ip_45 <- crop(bio9_ip_45, study_site)
+bio9_ip_45 <- mask(bio9_ip_45, study_site)
+bio9_ip_45 <- bio9_ip_45/10
+#
+bio18_ip_45 <- crop(bio18_ip_45, study_site)
+bio18_ip_45 <- mask(bio18_ip_45, study_site)
+#
+bio19_ip_45 <- crop(bio19_ip_45, study_site)
+bio19_ip_45 <- mask(bio19_ip_45, study_site)
+#
+ahm_ip_45 <- crop(ahm_ip_45, study_site)
+ahm_ip_45 <- mask(ahm_ip_45, study_site)
+#
+shm_ip_45 <- crop(shm_ip_45, study_site)
+shm_ip_45 <- mask(shm_ip_45, study_site)
+#
+nffd_ip_45 <- crop(nffd_ip_45, study_site)
+nffd_ip_45 <- mask(nffd_ip_45, study_site)
+
+#Create raster stack
+IP_rcp45_vars <- stack( bio2_ip_45, bio3_ip_45, bio8_ip_45, bio9_ip_45, 
+                        bio18_ip_45, bio19_ip_45, ahm_ip_45, shm_ip_45, 
+                        nffd_ip_45, pH)
+names(IP_rcp45_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19",
+                          "ahm", "shm", "nffd", "pH")
+
+#Clean environment
+rm( bio2_ip_45, bio3_ip_45, bio8_ip_45, bio9_ip_45, bio18_ip_45, bio19_ip_45, ahm_ip_45, 
+    shm_ip_45, nffd_ip_45)
+
+########## RCP85 ########## 
+bio2_ip_85 <- raster("./2050/IP/rcp85/ip85bi502.tif")     
+bio3_ip_85 <- raster("./2050/IP/rcp85/ip85bi503.tif")       
+bio8_ip_85 <- raster("./2050/IP/rcp85/ip85bi508.tif")
+bio9_ip_85  <- raster("./2050/IP/rcp85/ip85bi509.tif")     
+bio18_ip_85 <- raster("./2050/IP/rcp85/ip85bi5018.tif")     
+bio19_ip_85 <- raster("./2050/IP/rcp85/ip85bi5019.tif")       
+ahm_ip_85 <- raster("./2050/IP/rcp85/AHM.asc") 
+shm_ip_85 <- raster("./2050/IP/rcp85/SHM.asc") 
+nffd_ip_85 <- raster("./2050/IP/rcp85/NFFD.asc")      
+
+#Reproject
+ahm_ip_85 <- projectRaster(from = ahm_ip_85, to = bio19_ip_85, method="bilinear")
+shm_ip_85 <- projectRaster(from = shm_ip_85, to = bio19_ip_85, method="bilinear")
+nffd_ip_85 <- projectRaster(from = nffd_ip_85, to = bio19_ip_85, method="bilinear")
+
+#Cut
+bio2_ip_85 <- crop(bio2_ip_85, study_site)
+bio2_ip_85 <- mask(bio2_ip_85, study_site)
+bio2_ip_85 <- bio2_ip_85/10
+#
+bio3_ip_85 <- crop(bio3_ip_85, study_site)
+bio3_ip_85 <- mask(bio3_ip_85, study_site)
+#
+bio8_ip_85 <- crop(bio8_ip_85, study_site)
+bio8_ip_85 <- mask(bio8_ip_85, study_site)
+bio8_ip_85 <- bio8_ip_85/10
+#
+bio9_ip_85 <- crop(bio9_ip_85, study_site)
+bio9_ip_85 <- mask(bio9_ip_85, study_site)
+bio9_ip_85 <- bio9_ip_85/10
+#
+bio18_ip_85 <- crop(bio18_ip_85, study_site)
+bio18_ip_85 <- mask(bio18_ip_85, study_site)
+#
+bio19_ip_85 <- crop(bio19_ip_85, study_site)
+bio19_ip_85 <- mask(bio19_ip_85, study_site)
+#
+ahm_ip_85 <- crop(ahm_ip_85, study_site)
+ahm_ip_85 <- mask(ahm_ip_85, study_site)
+#
+shm_ip_85 <- crop(shm_ip_85, study_site)
+shm_ip_85 <- mask(shm_ip_85, study_site)
+#
+nffd_ip_85 <- crop(nffd_ip_85, study_site)
+nffd_ip_85 <- mask(nffd_ip_85, study_site)
+
+#Create raster stack
+IP_rcp85_vars <- stack( bio2_ip_85, bio3_ip_85, bio8_ip_85, bio9_ip_85, 
+                        bio18_ip_85, bio19_ip_85, ahm_ip_85, shm_ip_85, 
+                        nffd_ip_85, pH)
+names(IP_rcp85_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19",
+                          "ahm", "shm", "nffd", "pH")
+
+#Clean environment
+rm( bio2_ip_85, bio3_ip_85, bio8_ip_85, bio9_ip_85, bio18_ip_85, bio19_ip_85, ahm_ip_85, 
+    shm_ip_85, nffd_ip_85)
+
+
+######################## MPI-ESM-LR	(MP) ######################## 
+
+########## RCP45 ########## 
+bio2_mp_45 <- raster("./2050/MP/rcp45/mp45bi502.tif")     
+bio3_mp_45 <- raster("./2050/MP/rcp45/mp45bi503.tif")       
+bio8_mp_45 <- raster("./2050/MP/rcp45/mp45bi508.tif")
+bio9_mp_45  <- raster("./2050/MP/rcp45/mp45bi509.tif")     
+bio18_mp_45 <- raster("./2050/MP/rcp45/mp45bi5018.tif")     
+bio19_mp_45 <- raster("./2050/MP/rcp45/mp45bi5019.tif")       
+ahm_mp_45 <- raster("./2050/MP/rcp45/AHM.asc") 
+shm_mp_45 <- raster("./2050/MP/rcp45/SHM.asc") 
+nffd_mp_45 <- raster("./2050/MP/rcp45/NFFD.asc")      
+
+#Reproject
+ahm_mp_45 <- projectRaster(from = ahm_mp_45, to = bio19_mp_45, method="bilinear")
+shm_mp_45 <- projectRaster(from = shm_mp_45, to = bio19_mp_45, method="bilinear")
+nffd_mp_45 <- projectRaster(from = nffd_mp_45, to = bio19_mp_45, method="bilinear")
+
+#Cut
+bio2_mp_45 <- crop(bio2_mp_45, study_site)
+bio2_mp_45 <- mask(bio2_mp_45, study_site)
+bio2_mp_45 <- bio2_mp_45/10
+#
+bio3_mp_45 <- crop(bio3_mp_45, study_site)
+bio3_mp_45 <- mask(bio3_mp_45, study_site)
+#
+bio8_mp_45 <- crop(bio8_mp_45, study_site)
+bio8_mp_45 <- mask(bio8_mp_45, study_site)
+bio8_mp_45 <- bio8_mp_45/10
+#
+bio9_mp_45 <- crop(bio9_mp_45, study_site)
+bio9_mp_45 <- mask(bio9_mp_45, study_site)
+bio9_mp_45 <- bio9_mp_45/10
+#
+bio18_mp_45 <- crop(bio18_mp_45, study_site)
+bio18_mp_45 <- mask(bio18_mp_45, study_site)
+#
+bio19_mp_45 <- crop(bio19_mp_45, study_site)
+bio19_mp_45 <- mask(bio19_mp_45, study_site)
+#
+ahm_mp_45 <- crop(ahm_mp_45, study_site)
+ahm_mp_45 <- mask(ahm_mp_45, study_site)
+#
+shm_mp_45 <- crop(shm_mp_45, study_site)
+shm_mp_45 <- mask(shm_mp_45, study_site)
+#
+nffd_mp_45 <- crop(nffd_mp_45, study_site)
+nffd_mp_45 <- mask(nffd_mp_45, study_site)
+
+#Create raster stack
+MP_rcp45_vars <- stack( bio2_mp_45, bio3_mp_45, bio8_mp_45, bio9_mp_45, 
+                        bio18_mp_45, bio19_mp_45, ahm_mp_45, shm_mp_45, 
+                        nffd_mp_45, pH)
+names(MP_rcp45_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19",
+                          "ahm", "shm", "nffd", "pH")
+
+#Clean environment
+rm( bio2_mp_45, bio3_mp_45, bio8_mp_45, bio9_mp_45, bio18_mp_45, bio19_mp_45, ahm_mp_45, 
+    shm_mp_45, nffd_mp_45)
+
+########## RCP85 ########## 
+bio2_mp_85 <- raster("./2050/MP/rcp85/mp85bi502.tif")     
+bio3_mp_85 <- raster("./2050/MP/rcp85/mp85bi503.tif")       
+bio8_mp_85 <- raster("./2050/MP/rcp85/mp85bi508.tif")
+bio9_mp_85  <- raster("./2050/MP/rcp85/mp85bi509.tif")     
+bio18_mp_85 <- raster("./2050/MP/rcp85/mp85bi5018.tif")     
+bio19_mp_85 <- raster("./2050/MP/rcp85/mp85bi5019.tif")       
+ahm_mp_85 <- raster("./2050/MP/rcp85/AHM.asc") 
+shm_mp_85 <- raster("./2050/MP/rcp85/SHM.asc") 
+nffd_mp_85 <- raster("./2050/MP/rcp85/NFFD.asc")      
+
+#Reproject
+ahm_mp_85 <- projectRaster(from = ahm_mp_85, to = bio19_mp_85, method="bilinear")
+shm_mp_85 <- projectRaster(from = shm_mp_85, to = bio19_mp_85, method="bilinear")
+nffd_mp_85 <- projectRaster(from = nffd_mp_85, to = bio19_mp_85, method="bilinear")
+
+#Cut
+bio2_mp_85 <- crop(bio2_mp_85, study_site)
+bio2_mp_85 <- mask(bio2_mp_85, study_site)
+bio2_mp_85 <- bio2_mp_85/10
+#
+bio3_mp_85 <- crop(bio3_mp_85, study_site)
+bio3_mp_85 <- mask(bio3_mp_85, study_site)
+#
+bio8_mp_85 <- crop(bio8_mp_85, study_site)
+bio8_mp_85 <- mask(bio8_mp_85, study_site)
+bio8_mp_85 <- bio8_mp_85/10
+#
+bio9_mp_85 <- crop(bio9_mp_85, study_site)
+bio9_mp_85 <- mask(bio9_mp_85, study_site)
+bio9_mp_85 <- bio9_mp_85/10
+#
+bio18_mp_85 <- crop(bio18_mp_85, study_site)
+bio18_mp_85 <- mask(bio18_mp_85, study_site)
+#
+bio19_mp_85 <- crop(bio19_mp_85, study_site)
+bio19_mp_85 <- mask(bio19_mp_85, study_site)
+#
+ahm_mp_85 <- crop(ahm_mp_85, study_site)
+ahm_mp_85 <- mask(ahm_mp_85, study_site)
+#
+shm_mp_85 <- crop(shm_mp_85, study_site)
+shm_mp_85 <- mask(shm_mp_85, study_site)
+#
+nffd_mp_85 <- crop(nffd_mp_85, study_site)
+nffd_mp_85 <- mask(nffd_mp_85, study_site)
+
+#Create raster stack
+MP_rcp85_vars <- stack( bio2_mp_85, bio3_mp_85, bio8_mp_85, bio9_mp_85, 
+                        bio18_mp_85, bio19_mp_85, ahm_mp_85, shm_mp_85, 
+                        nffd_mp_85, pH)
+names(MP_rcp85_vars) <- c("bio2","bio3","bio8","bio9","bio18","bio19",
+                          "ahm", "shm", "nffd", "pH")
+
+#Clean environment
+rm( bio2_mp_85, bio3_mp_85, bio8_mp_85, bio9_mp_85, bio18_mp_85, bio19_mp_85, ahm_mp_85, 
+    shm_mp_85, nffd_mp_85)
 
