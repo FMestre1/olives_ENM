@@ -1,3 +1,7 @@
+################################################################################
+#                               POST MODELLING
+################################################################################
+
 #FMestre
 #01/10/2021
 
@@ -9,23 +13,23 @@ library("latticeExtra")
 
 #Load rasters  #######################################
 #MEAN
-ensemble_olive_D <- raster("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/first_output/ensemble_olive_D_current.img")
-ensemble_olive_D_2050_MEAN_45 <- raster("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/first_output/ensemble_olive_D_2050_MEAN_45.tif")
-ensemble_olive_D_2050_MEAN_85 <- raster("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/first_output/ensemble_olive_D_2050_MEAN_85.tif")
+ensemble_olive_D <- raster("ensemble_olive_D_current.img")
+ensemble_olive_D_2050_MEAN_45 <- raster("ensemble_olive_D_2050_MEAN_45.tif")
+ensemble_olive_D_2050_MEAN_85 <- raster("ensemble_olive_D_2050_MEAN_85.tif")
 #RCP45
-ensemble_olive_D_2050_HE_45 <- raster("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/first_output/ensemble_olive_D_2050_HE_45.img")
-ensemble_olive_D_2050_GF_45 <- raster("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/first_output/ensemble_olive_D_2050_GF_45.img")
-ensemble_olive_D_2050_CC_45 <- raster("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/first_output/ensemble_olive_D_2050_CC_45.img")
-ensemble_olive_D_2050_IN_45 <- raster("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/first_output/ensemble_olive_D_2050_IN_45.img")
-ensemble_olive_D_2050_IP_45 <- raster("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/first_output/ensemble_olive_D_2050_IP_45.img")
-ensemble_olive_D_2050_MP_45 <- raster("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/first_output/ensemble_olive_D_2050_MP_45.img")
+ensemble_olive_D_2050_HE_45 <- raster("ensemble_olive_D_2050_HE_45.img")
+ensemble_olive_D_2050_GF_45 <- raster("ensemble_olive_D_2050_GF_45.img")
+ensemble_olive_D_2050_CC_45 <- raster("ensemble_olive_D_2050_CC_45.img")
+ensemble_olive_D_2050_IN_45 <- raster("ensemble_olive_D_2050_IN_45.img")
+ensemble_olive_D_2050_IP_45 <- raster("ensemble_olive_D_2050_IP_45.img")
+ensemble_olive_D_2050_MP_45 <- raster("ensemble_olive_D_2050_MP_45.img")
 #RCP84
-ensemble_olive_D_2050_HE_85 <- raster("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/first_output/ensemble_olive_D_2050_HE_85.img") 
-ensemble_olive_D_2050_GF_85 <- raster("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/first_output/ensemble_olive_D_2050_GF_85.img") 
-ensemble_olive_D_2050_CC_85 <- raster("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/first_output/ensemble_olive_D_2050_CC_85.img")
-ensemble_olive_D_2050_IN_85 <- raster("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/first_output/ensemble_olive_D_2050_IN_85.img")
-ensemble_olive_D_2050_IP_85 <- raster("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/first_output/ensemble_olive_D_2050_IP_85.img")
-ensemble_olive_D_2050_MP_85 <- raster("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/first_output/ensemble_olive_D_2050_MP_85.img")
+ensemble_olive_D_2050_HE_85 <- raster("ensemble_olive_D_2050_HE_85.img") 
+ensemble_olive_D_2050_GF_85 <- raster("ensemble_olive_D_2050_GF_85.img") 
+ensemble_olive_D_2050_CC_85 <- raster("ensemble_olive_D_2050_CC_85.img")
+ensemble_olive_D_2050_IN_85 <- raster("ensemble_olive_D_2050_IN_85.img")
+ensemble_olive_D_2050_IP_85 <- raster("ensemble_olive_D_2050_IP_85.img")
+ensemble_olive_D_2050_MP_85 <- raster("ensemble_olive_D_2050_MP_85.img")
 
 
 ######################################################
@@ -33,7 +37,7 @@ ensemble_olive_D_2050_MP_85 <- raster("C:/Users/Frederico/Documents/0. Artigos/O
 #Plot the average  ###################################
 #FIG3
 
-dop <- raster::shapefile("C:/Users/Frederico/Documents/0. Artigos/Oliveiras_SDM/Dados/DOP_azeite/dop_azeite_PI.shp")
+dop <- raster::shapefile("D:\\SDM_OLIVES\\shape\\dop_azeite_PI.shp")
 
 #Palette
 colours_RYB <- colorRampPalette(c("white" ,"darkolivegreen1","darkolivegreen2","darkolivegreen"))

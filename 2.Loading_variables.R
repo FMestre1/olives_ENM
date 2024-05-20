@@ -1,3 +1,7 @@
+################################################################################
+#                    LOADING OF VARIABLES FOR PROJECTION
+################################################################################
+
 
 ###########################################################
 ######################### CURRENT ######################### 
@@ -24,17 +28,17 @@
 #system("unzip ./2050/CC/rcp85/cc85bi50.zip -d ./2050/CC/rcp85/")
 
 ########## RCP45 ########## 
-bio2_cc_45 <- raster("./2050/CC/rcp45/cc45bi502.tif")     
-bio3_cc_45 <- raster("./2050/CC/rcp45/cc45bi503.tif")       
-bio8_cc_45 <- raster("./2050/CC/rcp45/cc45bi508.tif")
-bio9_cc_45  <- raster("./2050/CC/rcp45/cc45bi509.tif")     
-bio18_cc_45  <- raster("./2050/CC/rcp45/cc45bi5018.tif")     
-bio19_cc_45  <- raster("./2050/CC/rcp45/cc45bi5019.tif")       
-ahm_cc_45  <- raster("./2050/CC/rcp45/AHM.asc") 
-shm_cc_45 <- raster("./2050/CC/rcp45/SHM.asc") 
-nffd_cc_45 <- raster("./2050/CC/rcp45/NFFD.asc")      
+bio2_cc_45 <- raster("D:/SDM_OLIVES/2050/CC/rcp45/cc45bi502.tif")     
+bio3_cc_45 <- raster("D:/SDM_OLIVES/2050/CC/rcp45/cc45bi503.tif")       
+bio8_cc_45 <- raster("D:/SDM_OLIVES/2050/CC/rcp45/cc45bi508.tif")
+bio9_cc_45  <- raster("D:/SDM_OLIVES/2050/CC/rcp45/cc45bi509.tif")     
+bio18_cc_45 <- raster("D:/SDM_OLIVES/2050/CC/rcp45/cc45bi5018.tif")     
+bio19_cc_45 <- raster("D:/SDM_OLIVES/2050/CC/rcp45/cc45bi5019.tif")       
+ahm_cc_45 <- raster("D:/SDM_OLIVES/2050/CC/rcp45/AHM.asc") 
+shm_cc_45 <- raster("D:/SDM_OLIVES/2050/CC/rcp45/SHM.asc") 
+nffd_cc_45 <- raster("D:/SDM_OLIVES/2050/CC/rcp45/NFFD.asc")      
 #pH #Use allways the same pH raster
-pH <- raster("current_vars/ph_wgs84.tif")
+pH <- raster("D:/SDM_OLIVES/current_vars/ph_wgs84.tif")
 
 #Reproject
 ahm_cc_45 <- projectRaster(from = ahm_cc_45, to = bio19_cc_45, method="bilinear")
@@ -91,15 +95,15 @@ rm( bio2_cc_45, bio3_cc_45, bio8_cc_45, bio9_cc_45, bio18_cc_45, bio19_cc_45, ah
 
 ########## RCP85 ########## 
 #CC_rcp85_vars
-bio2_cc_85 <- raster("./2050/CC/rcp85/cc85bi502.tif")     
-bio3_cc_85 <- raster("./2050/CC/rcp85/cc85bi503.tif")       
-bio8_cc_85 <- raster("./2050/CC/rcp85/cc85bi508.tif")
-bio9_cc_85  <- raster("./2050/CC/rcp85/cc85bi509.tif")     
-bio18_cc_85 <- raster("./2050/CC/rcp85/cc85bi5018.tif")     
-bio19_cc_85 <- raster("./2050/CC/rcp85/cc85bi5019.tif")       
-ahm_cc_85 <- raster("./2050/CC/rcp85/AHM.asc") 
-shm_cc_85 <- raster("./2050/CC/rcp85/SHM.asc") 
-nffd_cc_85 <- raster("./2050/CC/rcp85/NFFD.asc")      
+bio2_cc_85 <- raster("D:/SDM_OLIVES/2050/CC/rcp85/cc85bi502.tif")     
+bio3_cc_85 <- raster("D:/SDM_OLIVES/2050/CC/rcp85/cc85bi503.tif")       
+bio8_cc_85 <- raster("D:/SDM_OLIVES/2050/CC/rcp85/cc85bi508.tif")
+bio9_cc_85  <- raster("D:/SDM_OLIVES/2050/CC/rcp85/cc85bi509.tif")     
+bio18_cc_85 <- raster("D:/SDM_OLIVES/2050/CC/rcp85/cc85bi5018.tif")     
+bio19_cc_85 <- raster("D:/SDM_OLIVES/2050/CC/rcp85/cc85bi5019.tif")       
+ahm_cc_85 <- raster("D:/SDM_OLIVES/2050/CC/rcp85/AHM.asc") 
+shm_cc_85 <- raster("D:/SDM_OLIVES/2050/CC/rcp85/SHM.asc") 
+nffd_cc_85 <- raster("D:/SDM_OLIVES/2050/CC/rcp85/NFFD.asc")      
 
 #Reproject
 ahm_cc_85 <- projectRaster(from = ahm_cc_85, to = bio19_cc_85, method="bilinear")
@@ -152,8 +156,8 @@ rm( bio2_cc_85, bio3_cc_85, bio8_cc_85, bio9_cc_85, bio18_cc_85, bio19_cc_85, ah
 ######################## CNRM-CM5 (CN) ######################## 
 #CN_rcp45_vars
 #CN_rcp85_vars
-system("unzip ./2050/CN/rcp45/cn45bi50.zip -d ./2050/CN/rcp45/")
-system("unzip ./2050/CN/rcp85/cn85bi50.zip -d ./2050/CN/rcp85/")
+#system("unzip ./2050/CN/rcp45/cn45bi50.zip -d ./2050/CN/rcp45/")
+#system("unzip ./2050/CN/rcp85/cn85bi50.zip -d ./2050/CN/rcp85/")
 
 ########## RCP45 ########## 
 #AHM and SHM have problems!
@@ -163,15 +167,15 @@ system("unzip ./2050/CN/rcp85/cn85bi50.zip -d ./2050/CN/rcp85/")
 ######################## GFDL-CM3	(GF) ######################## 
 
 ########## RCP45 ########## 
-bio2_gf_45 <- raster("./2050/GF/rcp45/gf45bi502.tif")     
-bio3_gf_45 <- raster("./2050/GF/rcp45/gf45bi503.tif")       
-bio8_gf_45 <- raster("./2050/GF/rcp45/gf45bi508.tif")
-bio9_gf_45  <- raster("./2050/GF/rcp45/gf45bi509.tif")     
-bio18_gf_45 <- raster("./2050/GF/rcp45/gf45bi5018.tif")     
-bio19_gf_45 <- raster("./2050/GF/rcp45/gf45bi5019.tif")       
-ahm_gf_45 <- raster("./2050/GF/rcp45/AHM.asc") 
-shm_gf_45 <- raster("./2050/GF/rcp45/SHM.asc") 
-nffd_gf_45 <- raster("./2050/GF/rcp45/NFFD.asc")      
+bio2_gf_45 <- raster("D:/SDM_OLIVES/2050/GF/rcp45/gf45bi502.tif")     
+bio3_gf_45 <- raster("D:/SDM_OLIVES/2050/GF/rcp45/gf45bi503.tif")       
+bio8_gf_45 <- raster("D:/SDM_OLIVES/2050/GF/rcp45/gf45bi508.tif")
+bio9_gf_45  <- raster("D:/SDM_OLIVES/2050/GF/rcp45/gf45bi509.tif")     
+bio18_gf_45 <- raster("D:/SDM_OLIVES/2050/GF/rcp45/gf45bi5018.tif")     
+bio19_gf_45 <- raster("D:/SDM_OLIVES/2050/GF/rcp45/gf45bi5019.tif")       
+ahm_gf_45 <- raster("D:/SDM_OLIVES/2050/GF/rcp45/AHM.asc") 
+shm_gf_45 <- raster("D:/SDM_OLIVES/2050/GF/rcp45/SHM.asc") 
+nffd_gf_45 <- raster("D:/SDM_OLIVES/2050/GF/rcp45/NFFD.asc")      
 
 #Reproject
 ahm_gf_45 <- projectRaster(from = ahm_gf_45, to = bio19_gf_45, method="bilinear")
@@ -221,15 +225,15 @@ rm( bio2_gf_45, bio3_gf_45, bio8_gf_45, bio9_gf_45, bio18_gf_45, bio19_gf_45, ah
     shm_gf_45, nffd_gf_45)
 
 ########## RCP85 ########## 
-bio2_gf_85 <- raster("./2050/GF/rcp85/gf85bi502.tif")     
-bio3_gf_85 <- raster("./2050/GF/rcp85/gf85bi503.tif")       
-bio8_gf_85 <- raster("./2050/GF/rcp85/gf85bi508.tif")
-bio9_gf_85  <- raster("./2050/GF/rcp85/gf85bi509.tif")     
-bio18_gf_85 <- raster("./2050/GF/rcp85/gf85bi5018.tif")     
-bio19_gf_85 <- raster("./2050/GF/rcp85/gf85bi5019.tif")       
-ahm_gf_85 <- raster("./2050/GF/rcp85/AHM.asc") 
-shm_gf_85 <- raster("./2050/GF/rcp85/SHM.asc") 
-nffd_gf_85 <- raster("./2050/GF/rcp85/NFFD.asc")      
+bio2_gf_85 <- raster("D:/SDM_OLIVES/2050/GF/rcp85/gf85bi502.tif")     
+bio3_gf_85 <- raster("D:/SDM_OLIVES/2050/GF/rcp85/gf85bi503.tif")       
+bio8_gf_85 <- raster("D:/SDM_OLIVES/2050/GF/rcp85/gf85bi508.tif")
+bio9_gf_85  <- raster("D:/SDM_OLIVES/2050/GF/rcp85/gf85bi509.tif")     
+bio18_gf_85 <- raster("D:/SDM_OLIVES/2050/GF/rcp85/gf85bi5018.tif")     
+bio19_gf_85 <- raster("D:/SDM_OLIVES/2050/GF/rcp85/gf85bi5019.tif")       
+ahm_gf_85 <- raster("D:/SDM_OLIVES/2050/GF/rcp85/AHM.asc") 
+shm_gf_85 <- raster("D:/SDM_OLIVES/2050/GF/rcp85/SHM.asc") 
+nffd_gf_85 <- raster("D:/SDM_OLIVES/2050/GF/rcp85/NFFD.asc")      
 
 #Reproject
 ahm_gf_85 <- projectRaster(from = ahm_gf_85, to = bio19_gf_85, method="bilinear")
@@ -281,15 +285,15 @@ rm( bio2_gf_85, bio3_gf_85, bio8_gf_85, bio9_gf_85, bio18_gf_85, bio19_gf_85, ah
 ######################## HadGEM2-ES	(HE) ######################## 
 
 ########## RCP45 ########## 
-bio2_he_45 <- raster("./2050/HE/rcp45/he45bi502.tif")     
-bio3_he_45 <- raster("./2050/HE/rcp45/he45bi503.tif")       
-bio8_he_45 <- raster("./2050/HE/rcp45/he45bi508.tif")
-bio9_he_45  <- raster("./2050/HE/rcp45/he45bi509.tif")     
-bio18_he_45 <- raster("./2050/HE/rcp45/he45bi5018.tif")     
-bio19_he_45 <- raster("./2050/HE/rcp45/he45bi5019.tif")       
-ahm_he_45 <- raster("./2050/HE/rcp45/AHM.asc") 
-shm_he_45 <- raster("./2050/HE/rcp45/SHM.asc") 
-nffd_he_45 <- raster("./2050/HE/rcp45/NFFD.asc")      
+bio2_he_45 <- raster("D:/SDM_OLIVES/2050/HE/rcp45/he45bi502.tif")     
+bio3_he_45 <- raster("D:/SDM_OLIVES/2050/HE/rcp45/he45bi503.tif")       
+bio8_he_45 <- raster("D:/SDM_OLIVES/2050/HE/rcp45/he45bi508.tif")
+bio9_he_45  <- raster("D:/SDM_OLIVES/2050/HE/rcp45/he45bi509.tif")     
+bio18_he_45 <- raster("D:/SDM_OLIVES/2050/HE/rcp45/he45bi5018.tif")     
+bio19_he_45 <- raster("D:/SDM_OLIVES/2050/HE/rcp45/he45bi5019.tif")       
+ahm_he_45 <- raster("D:/SDM_OLIVES/2050/HE/rcp45/AHM.asc") 
+shm_he_45 <- raster("D:/SDM_OLIVES/2050/HE/rcp45/SHM.asc") 
+nffd_he_45 <- raster("D:/SDM_OLIVES/2050/HE/rcp45/NFFD.asc")      
 
 #Reproject
 ahm_he_45 <- projectRaster(from = ahm_he_45, to = bio19_he_45, method="bilinear")
@@ -339,18 +343,18 @@ rm( bio2_he_45, bio3_he_45, bio8_he_45, bio9_he_45, bio18_he_45, bio19_he_45, ah
     shm_he_45, nffd_he_45)
 
 ########## RCP85 ########## 
-bio2_he_85 <- raster("./2050/HE/rcp85/he85bi502.tif")     
-bio3_he_85 <- raster("./2050/HE/rcp85/he85bi503.tif")       
-bio8_he_85 <- raster("./2050/HE/rcp85/he85bi508.tif")
-bio9_he_85  <- raster("./2050/HE/rcp85/he85bi509.tif")     
-bio18_he_85 <- raster("./2050/HE/rcp85/he85bi5018.tif")     
-bio19_he_85 <- raster("./2050/HE/rcp85/he85bi5019.tif")       
-ahm_he_85 <- raster("./2050/HE/rcp85/AHM.asc") 
-shm_he_85 <- raster("./2050/HE/rcp85/SHM.asc") 
-nffd_he_85 <- raster("./2050/HE/rcp85/NFFD.asc")      
+bio2_he_85 <- raster("D:/SDM_OLIVES/2050/HE/rcp85/he85bi502.tif")     
+bio3_he_85 <- raster("D:/SDM_OLIVES/2050/HE/rcp85/he85bi503.tif")       
+bio8_he_85 <- raster("D:/SDM_OLIVES/2050/HE/rcp85/he85bi508.tif")
+bio9_he_85  <- raster("D:/SDM_OLIVES/2050/HE/rcp85/he85bi509.tif")     
+bio18_he_85 <- raster("D:/SDM_OLIVES/2050/HE/rcp85/he85bi5018.tif")     
+bio19_he_85 <- raster("D:/SDM_OLIVES/2050/HE/rcp85/he85bi5019.tif")       
+ahm_he_85 <- raster("D:/SDM_OLIVES/2050/HE/rcp85/AHM.asc") 
+shm_he_85 <- raster("D:/SDM_OLIVES/2050/HE/rcp85/SHM.asc") 
+nffd_he_85 <- raster("D:/SDM_OLIVES/2050/HE/rcp85/NFFD.asc")      
 
 #Reproject
-ahm_he_85 <- projectRaster(from = ahm_he_85, to = bio19_he_85, method="bilinear")
+ahm_he_85 <- projectRaster(from = ahm_hev_85, to = bio19_he_85, method="bilinear")
 shm_he_85 <- projectRaster(from = shm_he_85, to = bio19_he_85, method="bilinear")
 nffd_he_85 <- projectRaster(from = nffd_he_85, to = bio19_he_85, method="bilinear")
 
@@ -400,15 +404,15 @@ rm( bio2_he_85, bio3_he_85, bio8_he_85, bio9_he_85, bio18_he_85, bio19_he_85, ah
 ######################## INMCM4 (IN) ######################## 
 
 ########## RCP45 ########## 
-bio2_in_45 <- raster("./2050/IN/rcp45/in45bi502.tif")     
-bio3_in_45 <- raster("./2050/IN/rcp45/in45bi503.tif")       
-bio8_in_45 <- raster("./2050/IN/rcp45/in45bi508.tif")
-bio9_in_45  <- raster("./2050/IN/rcp45/in45bi509.tif")     
-bio18_in_45 <- raster("./2050/IN/rcp45/in45bi5018.tif")     
-bio19_in_45 <- raster("./2050/IN/rcp45/in45bi5019.tif")       
-ahm_in_45 <- raster("./2050/IN/rcp45/AHM.asc") 
-shm_in_45 <- raster("./2050/IN/rcp45/SHM.asc") 
-nffd_in_45 <- raster("./2050/IN/rcp45/NFFD.asc")      
+bio2_in_45 <- raster("D:/SDM_OLIVES/2050/IN/rcp45/in45bi502.tif")     
+bio3_in_45 <- raster("D:/SDM_OLIVES/2050/IN/rcp45/in45bi503.tif")       
+bio8_in_45 <- raster("D:/SDM_OLIVES/2050/IN/rcp45/in45bi508.tif")
+bio9_in_45  <- raster("D:/SDM_OLIVES/2050/IN/rcp45/in45bi509.tif")     
+bio18_in_45 <- raster("D:/SDM_OLIVES/2050/IN/rcp45/in45bi5018.tif")     
+bio19_in_45 <- raster("D:/SDM_OLIVES/2050/IN/rcp45/in45bi5019.tif")       
+ahm_in_45 <- raster("D:/SDM_OLIVES/2050/IN/rcp45/AHM.asc") 
+shm_in_45 <- raster("D:/SDM_OLIVES/2050/IN/rcp45/SHM.asc") 
+nffd_in_45 <- raster("D:/SDM_OLIVES/2050/IN/rcp45/NFFD.asc")      
 
 #Reproject
 ahm_in_45 <- projectRaster(from = ahm_in_45, to = bio19_in_45, method="bilinear")
@@ -458,15 +462,15 @@ rm( bio2_in_45, bio3_in_45, bio8_in_45, bio9_in_45, bio18_in_45, bio19_in_45, ah
     shm_in_45, nffd_in_45)
 
 ########## RCP85 ########## 
-bio2_in_85 <- raster("./2050/IN/rcp85/in85bi502.tif")     
-bio3_in_85 <- raster("./2050/IN/rcp85/in85bi503.tif")       
-bio8_in_85 <- raster("./2050/IN/rcp85/in85bi508.tif")
-bio9_in_85  <- raster("./2050/IN/rcp85/in85bi509.tif")     
-bio18_in_85 <- raster("./2050/IN/rcp85/in85bi5018.tif")     
-bio19_in_85 <- raster("./2050/IN/rcp85/in85bi5019.tif")       
-ahm_in_85 <- raster("./2050/IN/rcp85/AHM.asc") 
-shm_in_85 <- raster("./2050/IN/rcp85/SHM.asc") 
-nffd_in_85 <- raster("./2050/IN/rcp85/NFFD.asc")      
+bio2_in_85 <- raster("D:/SDM_OLIVES/2050/IN/rcp85/in85bi502.tif")     
+bio3_in_85 <- raster("D:/SDM_OLIVES/2050/IN/rcp85/in85bi503.tif")       
+bio8_in_85 <- raster("D:/SDM_OLIVES/2050/IN/rcp85/in85bi508.tif")
+bio9_in_85  <- raster("D:/SDM_OLIVES/2050/IN/rcp85/in85bi509.tif")     
+bio18_in_85 <- raster("D:/SDM_OLIVES/2050/IN/rcp85/in85bi5018.tif")     
+bio19_in_85 <- raster("D:/SDM_OLIVES/2050/IN/rcp85/in85bi5019.tif")       
+ahm_in_85 <- raster("D:/SDM_OLIVES/2050/IN/rcp85/AHM.asc") 
+shm_in_85 <- raster("D:/SDM_OLIVES/2050/IN/rcp85/SHM.asc") 
+nffd_in_85 <- raster("D:/SDM_OLIVES/2050/IN/rcp85/NFFD.asc")      
 
 #Reproject
 ahm_in_85 <- projectRaster(from = ahm_in_85, to = bio19_in_85, method="bilinear")
@@ -519,15 +523,15 @@ rm( bio2_in_85, bio3_in_85, bio8_in_85, bio9_in_85, bio18_in_85, bio19_in_85, ah
 ######################## IPSL-CM5A-LR	(IP) ######################## 
 
 ########## RCP45 ########## 
-bio2_ip_45 <- raster("./2050/IP/rcp45/ip45bi502.tif")     
-bio3_ip_45 <- raster("./2050/IP/rcp45/ip45bi503.tif")       
-bio8_ip_45 <- raster("./2050/IP/rcp45/ip45bi508.tif")
-bio9_ip_45  <- raster("./2050/IP/rcp45/ip45bi509.tif")     
-bio18_ip_45 <- raster("./2050/IP/rcp45/ip45bi5018.tif")     
-bio19_ip_45 <- raster("./2050/IP/rcp45/ip45bi5019.tif")       
-ahm_ip_45 <- raster("./2050/IP/rcp45/AHM.asc") 
-shm_ip_45 <- raster("./2050/IP/rcp45/SHM.asc") 
-nffd_ip_45 <- raster("./2050/IP/rcp45/NFFD.asc")      
+bio2_ip_45 <- raster("D:/SDM_OLIVES/2050/IP/rcp45/ip45bi502.tif")     
+bio3_ip_45 <- raster("D:/SDM_OLIVES/2050/IP/rcp45/ip45bi503.tif")       
+bio8_ip_45 <- raster("D:/SDM_OLIVES/2050/IP/rcp45/ip45bi508.tif")
+bio9_ip_45  <- raster("D:/SDM_OLIVES/2050/IP/rcp45/ip45bi509.tif")     
+bio18_ip_45 <- raster("D:/SDM_OLIVES/2050/IP/rcp45/ip45bi5018.tif")     
+bio19_ip_45 <- raster("D:/SDM_OLIVES/2050/IP/rcp45/ip45bi5019.tif")       
+ahm_ip_45 <- raster("D:/SDM_OLIVES/2050/IP/rcp45/AHM.asc") 
+shm_ip_45 <- raster("D:/SDM_OLIVES/2050/IP/rcp45/SHM.asc") 
+nffd_ip_45 <- raster("D:/SDM_OLIVES/2050/IP/rcp45/NFFD.asc")      
 
 #Reproject
 ahm_ip_45 <- projectRaster(from = ahm_ip_45, to = bio19_ip_45, method="bilinear")
@@ -577,15 +581,15 @@ rm( bio2_ip_45, bio3_ip_45, bio8_ip_45, bio9_ip_45, bio18_ip_45, bio19_ip_45, ah
     shm_ip_45, nffd_ip_45)
 
 ########## RCP85 ########## 
-bio2_ip_85 <- raster("./2050/IP/rcp85/ip85bi502.tif")     
-bio3_ip_85 <- raster("./2050/IP/rcp85/ip85bi503.tif")       
-bio8_ip_85 <- raster("./2050/IP/rcp85/ip85bi508.tif")
-bio9_ip_85  <- raster("./2050/IP/rcp85/ip85bi509.tif")     
-bio18_ip_85 <- raster("./2050/IP/rcp85/ip85bi5018.tif")     
-bio19_ip_85 <- raster("./2050/IP/rcp85/ip85bi5019.tif")       
-ahm_ip_85 <- raster("./2050/IP/rcp85/AHM.asc") 
-shm_ip_85 <- raster("./2050/IP/rcp85/SHM.asc") 
-nffd_ip_85 <- raster("./2050/IP/rcp85/NFFD.asc")      
+bio2_ip_85 <- raster("D:/SDM_OLIVES/2050/IP/rcp85/ip85bi502.tif")     
+bio3_ip_85 <- raster("D:/SDM_OLIVES/2050/IP/rcp85/ip85bi503.tif")       
+bio8_ip_85 <- raster("D:/SDM_OLIVES/2050/IP/rcp85/ip85bi508.tif")
+bio9_ip_85  <- raster("D:/SDM_OLIVES/2050/IP/rcp85/ip85bi509.tif")     
+bio18_ip_85 <- raster("D:/SDM_OLIVES/2050/IP/rcp85/ip85bi5018.tif")     
+bio19_ip_85 <- raster("D:/SDM_OLIVES/2050/IP/rcp85/ip85bi5019.tif")       
+ahm_ip_85 <- raster("D:/SDM_OLIVES/2050/IP/rcp85/AHM.asc") 
+shm_ip_85 <- raster("D:/SDM_OLIVES/2050/IP/rcp85/SHM.asc") 
+nffd_ip_85 <- raster("D:/SDM_OLIVES/2050/IP/rcp85/NFFD.asc")
 
 #Reproject
 ahm_ip_85 <- projectRaster(from = ahm_ip_85, to = bio19_ip_85, method="bilinear")
@@ -638,15 +642,15 @@ rm( bio2_ip_85, bio3_ip_85, bio8_ip_85, bio9_ip_85, bio18_ip_85, bio19_ip_85, ah
 ######################## MPI-ESM-LR	(MP) ######################## 
 
 ########## RCP45 ########## 
-bio2_mp_45 <- raster("./2050/MP/rcp45/mp45bi502.tif")     
-bio3_mp_45 <- raster("./2050/MP/rcp45/mp45bi503.tif")       
-bio8_mp_45 <- raster("./2050/MP/rcp45/mp45bi508.tif")
-bio9_mp_45  <- raster("./2050/MP/rcp45/mp45bi509.tif")     
-bio18_mp_45 <- raster("./2050/MP/rcp45/mp45bi5018.tif")     
-bio19_mp_45 <- raster("./2050/MP/rcp45/mp45bi5019.tif")       
-ahm_mp_45 <- raster("./2050/MP/rcp45/AHM.asc") 
-shm_mp_45 <- raster("./2050/MP/rcp45/SHM.asc") 
-nffd_mp_45 <- raster("./2050/MP/rcp45/NFFD.asc")      
+bio2_mp_45 <- raster("D:/SDM_OLIVES/2050/MP/rcp45/mp45bi502.tif")     
+bio3_mp_45 <- raster("D:/SDM_OLIVES/2050/MP/rcp45/mp45bi503.tif")       
+bio8_mp_45 <- raster("D:/SDM_OLIVES/2050/MP/rcp45/mp45bi508.tif")
+bio9_mp_45  <- raster("D:/SDM_OLIVES/2050/MP/rcp45/mp45bi509.tif")     
+bio18_mp_45 <- raster("D:/SDM_OLIVES/2050/MP/rcp45/mp45bi5018.tif")     
+bio19_mp_45 <- raster("D:/SDM_OLIVES/2050/MP/rcp45/mp45bi5019.tif")       
+ahm_mp_45 <- raster("D:/SDM_OLIVES/2050/MP/rcp45/AHM.asc") 
+shm_mp_45 <- raster("D:/SDM_OLIVES/2050/MP/rcp45/SHM.asc") 
+nffd_mp_45 <- raster("D:/SDM_OLIVES/2050/MP/rcp45/NFFD.asc")      
 
 #Reproject
 ahm_mp_45 <- projectRaster(from = ahm_mp_45, to = bio19_mp_45, method="bilinear")
@@ -696,15 +700,15 @@ rm( bio2_mp_45, bio3_mp_45, bio8_mp_45, bio9_mp_45, bio18_mp_45, bio19_mp_45, ah
     shm_mp_45, nffd_mp_45)
 
 ########## RCP85 ########## 
-bio2_mp_85 <- raster("./2050/MP/rcp85/mp85bi502.tif")     
-bio3_mp_85 <- raster("./2050/MP/rcp85/mp85bi503.tif")       
-bio8_mp_85 <- raster("./2050/MP/rcp85/mp85bi508.tif")
-bio9_mp_85  <- raster("./2050/MP/rcp85/mp85bi509.tif")     
-bio18_mp_85 <- raster("./2050/MP/rcp85/mp85bi5018.tif")     
-bio19_mp_85 <- raster("./2050/MP/rcp85/mp85bi5019.tif")       
-ahm_mp_85 <- raster("./2050/MP/rcp85/AHM.asc") 
-shm_mp_85 <- raster("./2050/MP/rcp85/SHM.asc") 
-nffd_mp_85 <- raster("./2050/MP/rcp85/NFFD.asc")      
+bio2_mp_85 <- raster("D:/SDM_OLIVES/2050/MP/rcp85/mp85bi502.tif")     
+bio3_mp_85 <- raster("D:/SDM_OLIVES/2050/MP/rcp85/mp85bi503.tif")       
+bio8_mp_85 <- raster("D:/SDM_OLIVES/2050/MP/rcp85/mp85bi508.tif")
+bio9_mp_85  <- raster("D:/SDM_OLIVES/2050/MP/rcp85/mp85bi509.tif")     
+bio18_mp_85 <- raster("D:/SDM_OLIVES/2050/MP/rcp85/mp85bi5018.tif")     
+bio19_mp_85 <- raster("D:/SDM_OLIVES/2050/MP/rcp85/mp85bi5019.tif")       
+ahm_mp_85 <- raster("D:/SDM_OLIVES/2050/MP/rcp85/AHM.asc") 
+shm_mp_85 <- raster("D:/SDM_OLIVES/2050/MP/rcp85/SHM.asc") 
+nffd_mp_85 <- raster("D:/SDM_OLIVES/2050/MP/rcp85/NFFD.asc")      
 
 #Reproject
 ahm_mp_85 <- projectRaster(from = ahm_mp_85, to = bio19_mp_85, method="bilinear")
