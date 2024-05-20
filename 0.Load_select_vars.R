@@ -438,9 +438,7 @@ rm(
 
 
 # 4.Load species presence
-olive_W <- raster::shapefile("species/olive_sylv_wgs84.shp")
 olive_D <- raster::shapefile("species/olive_domestic_wgs84.shp")
-olive_WD <- raster::shapefile("species/olive_ALL_wgs84.shp")
 
 #VIF (no need to run this again, just keep those that we had in the first version)
 #vif1 <- usdm::vifstep(preds_10x10)#stepwise elimination of highly inflating variables
@@ -458,24 +456,15 @@ keep_these <- c("bio2", "bio3", "bio8", "bio9", "bio18", "bio19", "nffd",
 preds2 <- preds_10x10[[keep_these]]
 
 #Add columns for species occurrence (column with value 1)
-occ <- rep(1,nrow(olive_W@data))
-olive_W@data <- cbind(olive_W@data, occ)
-#
 occ <- rep(1,nrow(olive_D@data))
 olive_D@data <- cbind(olive_D@data, occ)
-#
-occ <- rep(1,nrow(olive_WD@data))
-olive_WD@data <- cbind(olive_WD@data, occ)
-#
+
 
 #Simplify the argument table
-olive_W <- olive_W[,-c(1,2)]
 olive_D <- olive_D[,-c(1,2)]
-olive_WD <- olive_WD[,-1]
+
 #
 
 # 5.Format data
-data_olive_W <- sdmData(train=olive_W, predictors=preds2, bg=list(n=1000,method='gRandom',remove=TRUE))
 data_olive_D <- sdmData(train=olive_D, predictors=preds2, bg=list(n=1000,method='gRandom',remove=TRUE))
-data_olive_WD <- sdmData(train=olive_WD, predictors=preds2, bg=list(n=1000,method='gRandom',remove=TRUE))
 #
