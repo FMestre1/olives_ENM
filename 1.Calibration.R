@@ -16,8 +16,8 @@
 M_olive_D <- sdm::sdm(occ~.,data=data_olive_D,
                       methods=c('maxent','cart','rf','fda','glm','gam','mars','svm','brt'),
                       replication='cv',
-					            cv.folds=nrow(olive_D), #number of presences 
-					            ncore = 4, #number of cores
+		      cv.folds=nrow(olive_D), #number of presences 
+		      ncore = 4, #number of cores
                       n=1
                       )
 
