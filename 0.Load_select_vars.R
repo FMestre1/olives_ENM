@@ -467,4 +467,6 @@ olive_D <- olive_D[,-c(1,2)]
 
 # 5.Format data
 data_olive_D <- sdmData(train=olive_D, predictors=preds2, bg=list(n=1000,method='gRandom',remove=TRUE))
-#
+
+#Save
+write.sdm(data_olive_D, "data_olive_D")
