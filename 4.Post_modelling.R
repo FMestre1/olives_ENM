@@ -31,6 +31,23 @@ ensemble_olive_D_2050_IN_85 <- raster("ensemble_olive_D_2050_IN_85.img")
 ensemble_olive_D_2050_IP_85 <- raster("ensemble_olive_D_2050_IP_85.img")
 ensemble_olive_D_2050_MP_85 <- raster("ensemble_olive_D_2050_MP_85.img")
 
+#rcp45 - mean
+ensemble_olive_D_2050_MEAN_45 <- terra::mean(ensemble_olive_D_2050_HE_45,
+                                             ensemble_olive_D_2050_GF_45,
+                                             ensemble_olive_D_2050_CC_45,
+                                             ensemble_olive_D_2050_IN_45,
+                                             ensemble_olive_D_2050_IP_45,
+                                             ensemble_olive_D_2050_MP_45
+                                             )
+
+#rcp45 - mean
+ensemble_olive_D_2050_MEAN_85 <- terra::mean(ensemble_olive_D_2050_HE_85,
+                                             ensemble_olive_D_2050_GF_85,
+                                             ensemble_olive_D_2050_CC_85,
+                                             ensemble_olive_D_2050_IN_85,
+                                             ensemble_olive_D_2050_IP_85,
+                                             ensemble_olive_D_2050_MP_85
+)
 
 ######################################################
 
@@ -60,5 +77,5 @@ delta_rcp85 <- ensemble_olive_D_2050_MEAN_85 - ensemble_olive_D
 my.at2 <- seq(-1, 1, 0.1)
 colours_RYB_delta <- colorRampPalette(c("red" ,"white","green"))
 myTheme2 <- rasterVis::rasterTheme(region = colours_RYB_delta(100))
-rasterVis::levelplot(delta_rcp45, margin = NA, at = my.at2, contour=FALSE, par.settings = myTheme2)
-rasterVis::levelplot(delta_rcp85, margin = NA, at = my.at2, contour=FALSE, par.settings = myTheme2)
+rasterVis::levelplot(delta_rcp45, margin = NA, at = my.at2, contour=FALSE, par.settings = myTheme2, main = "Suitability difference with RCP4.5")
+rasterVis::levelplot(delta_rcp85, margin = NA, at = my.at2, contour=FALSE, par.settings = myTheme2, main = "Suitability difference with RCP8.5")

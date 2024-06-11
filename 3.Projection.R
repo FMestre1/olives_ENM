@@ -91,4 +91,20 @@ ensemble_olive_D_2050_MP_85 <- sdm::ensemble(M_olive_D,newdata=MP_rcp85_vars,fil
 #rm(MP_rcp85_vars)
 
 ############################################################ 
-save.image("olives.RData")
+#Save...
+#save.image("olives.RData")
+
+#Load...
+list_files <- list.files("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\")
+list_files <- grep("\\.img$", list_files, value = TRUE)
+list_files_paths <- paste0("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\", list_files)
+
+for(i in 1:length(list_files)){
+  
+  name_object <- list_files[i]
+  name_object <- stringr::str_remove(name_object,".img")
+  
+  assign(name_object, terra::rast(list_files_paths[i]))
+  
+}
+
