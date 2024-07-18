@@ -5,6 +5,9 @@
 #FMestre
 #30/07/2021
 
+#load package
+library(sdm)
+
 # Example 3: fits using 5 models, and evaluates using 10 runs of both 5-folds 
 #cross-validation and bootsrapping replication methods
 
@@ -16,15 +19,15 @@
 M_olive_D <- sdm::sdm(occ~.,data=data_olive_D,
                       methods=c('maxent','cart','rf','fda','glm','gam','mars','svm','brt'),
                       replication='cv',
-		      cv.folds=nrow(olive_D), #number of presences 
-		      ncore = 4, #number of cores
+            		      cv.folds=nrow(olive_D), #number of presences 
+		                  ncore = 4, #number of cores
                       n=1
                       )
 
-#save it
+#Save
 write.sdm(M_olive_D,filename = "sdm.olives")
-
-#
+#Load
+#read.sdm("")
 
 # 7.Model metrics and variable importance
 #

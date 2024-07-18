@@ -11,8 +11,10 @@ library("raster")
 library("ggplot2")
 library("latticeExtra")
 library(forcats)
+library(sdm)
 
-#Load rasters  #######################################
+
+#Load rasters
 #MEAN
 ensemble_olive_D <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_current.img")
 ensemble_olive_D_2050_MEAN_45 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_MEAN_45.tif")
@@ -31,6 +33,27 @@ ensemble_olive_D_2050_CC_85 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4
 ensemble_olive_D_2050_IN_85 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_IN_85.img")
 ensemble_olive_D_2050_IP_85 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_IP_85.img")
 ensemble_olive_D_2050_MP_85 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_MP_85.img")
+
+
+################################################################################
+#             Fig S1 - Individual suitability for each GCM - RCP 4.5
+################################################################################
+
+
+################################################################################
+#             Fig S2 - Individual suitability for each GCM - RCP 8.5
+################################################################################
+
+
+################################################################################
+#                         Fig S3 - Variable Importance
+################################################################################
+
+
+################################################################################
+#                         Fig S4 - Suitability Curves
+################################################################################
+
 
 #rcp45 - mean
 ensemble_olive_D_2050_MEAN_45 <- terra::mean(ensemble_olive_D_2050_HE_45,
@@ -51,10 +74,9 @@ ensemble_olive_D_2050_MEAN_85 <- terra::mean(ensemble_olive_D_2050_HE_85,
 )
 
 ################################################################################
-#                                    Figures
+#                      Figs xx to xx - Suitability
 ################################################################################
 
-#dop <- raster::shapefile("D:\\SDM_OLIVES\\shape\\dop_azeite_PI.shp")
 dop <- raster::shapefile("C:/Users/asus/Documents/0. Artigos/4. SUBMETIDOS/Oliveiras_SDM/shapes/dop2_sem_mallorca.shp")
 
 #Palette
@@ -65,6 +87,10 @@ my.at <- seq(0, 1, 0.01)
 rasterVis::levelplot(ensemble_olive_D, at=my.at, margin = list(FUN = 'median'), contour=FALSE, par.settings = myTheme)
 rasterVis::levelplot(ensemble_olive_D_2050_MEAN_45, at=my.at, margin = list(FUN = 'median'), contour=FALSE, par.settings = myTheme)
 rasterVis::levelplot(ensemble_olive_D_2050_MEAN_85, at=my.at, margin = list(FUN = 'median'), contour=FALSE, par.settings = myTheme)
+
+################################################################################
+#                   Figs xx and xx - Suitability differences
+################################################################################
 
 #Changes in suitability (maps) - Figure 2 and suplementary
 delta_rcp45 <- ensemble_olive_D_2050_MEAN_45 - ensemble_olive_D
@@ -79,7 +105,7 @@ rasterVis::levelplot(delta_rcp45, margin = NA, at = my.at2, contour=FALSE, par.s
 rasterVis::levelplot(delta_rcp85, margin = NA, at = my.at2, contour=FALSE, par.settings = myTheme2, main = "Suitability difference with RCP8.5")
 
 ################################################################################
-#                              DOP Suitability
+#                       Fig xx - DOP Suitability
 ################################################################################
 
 dop <- raster::shapefile("C:/Users/asus/Documents/0. Artigos/4. SUBMETIDOS/Oliveiras_SDM/shapes/dop2_sem_mallorca.shp")
@@ -145,10 +171,6 @@ names(all_suits)
 str(all_suits)
 
 all_suits$DOP <- as.factor(all_suits$DOP)
-
-#ggplot(all_suits, aes(DOP, suitability, fill=factor(scenario))) +
-#  geom_boxplot(outlier.colour = "lightgrey", outlier.size = 0.5) +   coord_flip() +
-#  scale_fill_brewer(palette="Greens")
 
 ggplot(all_suits, aes(fct_reorder(DOP, suitability), suitability, fill=factor(scenario))) +
   geom_boxplot(outlier.colour = "lightgrey", outlier.size = 0.5) +   
