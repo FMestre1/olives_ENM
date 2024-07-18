@@ -10,6 +10,7 @@ library("rasterVis")
 library("raster")
 library("ggplot2")
 library("latticeExtra")
+library(forcats)
 
 #Load rasters  #######################################
 #MEAN
@@ -140,16 +141,18 @@ names(current_DOP_future_SUIT_85_DF)[1] <- "suitability"
 names(current_DOP_future_SUIT_85_DF)[2] <- "DOP"
 
 all_suits <- rbind(current_DOP_current_SUIT_DF, current_DOP_future_SUIT_45_DF, current_DOP_future_SUIT_85_DF)
+names(all_suits)
+str(all_suits)
 
+all_suits$DOP <- as.factor(all_suits$DOP)
 
-ggplot(all_suits, aes(DOP, suitability, fill=factor(scenario))) +
-  geom_boxplot(outlier.colour = "lightgrey", outlier.size = 0.5) +   coord_flip() +
-  scale_fill_brewer(palette="Greens")
-
-library(forcats)
+#ggplot(all_suits, aes(DOP, suitability, fill=factor(scenario))) +
+#  geom_boxplot(outlier.colour = "lightgrey", outlier.size = 0.5) +   coord_flip() +
+#  scale_fill_brewer(palette="Greens")
 
 ggplot(all_suits, aes(fct_reorder(DOP, suitability), suitability, fill=factor(scenario))) +
-  geom_boxplot(outlier.colour = "lightgrey", outlier.size = 0.5) +   coord_flip() +
+  geom_boxplot(outlier.colour = "lightgrey", outlier.size = 0.5) +   
+  coord_flip() +
   scale_fill_brewer(palette="Greens") + 
   ggtitle("PDO suitability in each scenario") +
   xlab("PDO") + ylab("Climatic suitability")
