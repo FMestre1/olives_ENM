@@ -6,6 +6,8 @@
 #30/07/2021
 
 #load package
+#remove.packages("sdm")
+#devtools::install_github("babaknaimi/sdm")
 library(sdm)
 
 # Example 3: fits using 5 models, and evaluates using 10 runs of both 5-folds 
@@ -34,6 +36,8 @@ write.sdm(M_olive_D,filename = "sdm.olives")
 #getModelInfo(M_olive_D)
 plot(getVarImp(M_olive_D),'auc')
 #To get the curves plotted in two layers of graphs
+?sdm::rcurve
+sdm::rcurve(M_olive_D)
 rcurve(M_olive_D,n = names(preds2)[1:5], mean=TRUE, smooth=TRUE)
 rcurve(M_olive_D,n = names(preds2)[6:10], mean=TRUE, smooth=TRUE)
 #
