@@ -61,8 +61,8 @@ plot(getVarImp(M_olive_D),'auc')
 
 sdm::rcurve(M_olive_D)
             
-sdm::rcurve(M_olive_D,n = names(preds2)[1:5], mean=TRUE, smooth=TRUE)
-sdm::rcurve(M_olive_D,n = names(preds2)[6:10], mean=TRUE, smooth=TRUE)
+sdm::rcurve(M_olive_D, n = names(preds2)[1:5], mean=TRUE, smooth=TRUE)
+sdm::rcurve(M_olive_D, n = names(preds2)[6:10], mean=TRUE, smooth=TRUE)
 
 ################################################################################
 #                      Figs xx to xx - Suitability
