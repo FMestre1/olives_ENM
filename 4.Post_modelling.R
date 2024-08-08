@@ -16,24 +16,23 @@ library(sdm)
 
 #Load rasters
 #MEAN
-ensemble_olive_D <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_current.img")
-ensemble_olive_D_2050_MEAN_45 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_MEAN_45.tif")
-ensemble_olive_D_2050_MEAN_85 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_MEAN_85.tif")
+ensemble_olive_D <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_current.img")
+#ensemble_olive_D_2050_MEAN_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_MEAN_45.tif")
+#ensemble_olive_D_2050_MEAN_85 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_MEAN_85.tif")
 #RCP45
-ensemble_olive_D_2050_HE_45 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_HE_45.img")
-ensemble_olive_D_2050_GF_45 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_GF_45.img")
-ensemble_olive_D_2050_CC_45 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_CC_45.img")
-ensemble_olive_D_2050_IN_45 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_IN_45.img")
-ensemble_olive_D_2050_IP_45 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_IP_45.img")
-ensemble_olive_D_2050_MP_45 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_MP_45.img")
+ensemble_olive_D_2050_HE_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_HE_45.img")
+ensemble_olive_D_2050_GF_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_GF_45.img")
+ensemble_olive_D_2050_CC_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_CC_45.img")
+ensemble_olive_D_2050_IN_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_IN_45.img")
+ensemble_olive_D_2050_IP_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_IP_45.img")
+ensemble_olive_D_2050_MP_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_MP_45.img")
 #RCP84
-ensemble_olive_D_2050_HE_85 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_HE_85.img") 
-ensemble_olive_D_2050_GF_85 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_GF_85.img") 
-ensemble_olive_D_2050_CC_85 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_CC_85.img")
-ensemble_olive_D_2050_IN_85 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_IN_85.img")
-ensemble_olive_D_2050_IP_85 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_IP_85.img")
-ensemble_olive_D_2050_MP_85 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4. SUBMETIDOS\\Oliveiras_SDM\\june_results\\ensembles\\ensemble_olive_D_2050_MP_85.img")
-
+ensemble_olive_D_2050_HE_85 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_HE_85.img") 
+ensemble_olive_D_2050_GF_85 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_GF_85.img") 
+ensemble_olive_D_2050_CC_85 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_CC_85.img")
+ensemble_olive_D_2050_IN_85 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_IN_85.img")
+ensemble_olive_D_2050_IP_85 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_IP_85.img")
+ensemble_olive_D_2050_MP_85 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_MP_85.img")
 
 ################################################################################
 #             Fig S1 - Individual suitability for each GCM - RCP 4.5
@@ -50,28 +49,18 @@ ensemble_olive_D_2050_MP_85 <- raster("C:\\Users\\asus\\Documents\\0. Artigos\\4
 ################################################################################
 
 
+#M_olive_D <- sdm::read.sdm("C:\\Users\\mestr\\Desktop\\datasets e modelo\\M_olive_D-001.rds")
+#class(M_olive_D)
+plot(getVarImp(M_olive_D),'auc')
+
 ################################################################################
 #                         Fig S4 - Suitability Curves
 ################################################################################
 
+#names(preds2)
 
-#rcp45 - mean
-ensemble_olive_D_2050_MEAN_45 <- terra::mean(ensemble_olive_D_2050_HE_45,
-                                             ensemble_olive_D_2050_GF_45,
-                                             ensemble_olive_D_2050_CC_45,
-                                             ensemble_olive_D_2050_IN_45,
-                                             ensemble_olive_D_2050_IP_45,
-                                             ensemble_olive_D_2050_MP_45
-                                             )
-
-#rcp45 - mean
-ensemble_olive_D_2050_MEAN_85 <- terra::mean(ensemble_olive_D_2050_HE_85,
-                                             ensemble_olive_D_2050_GF_85,
-                                             ensemble_olive_D_2050_CC_85,
-                                             ensemble_olive_D_2050_IN_85,
-                                             ensemble_olive_D_2050_IP_85,
-                                             ensemble_olive_D_2050_MP_85
-)
+sdm::rcurve(M_olive_D,n = names(preds2)[1:5], mean=TRUE, smooth=TRUE)
+sdm::rcurve(M_olive_D,n = names(preds2)[6:10], mean=TRUE, smooth=TRUE)
 
 ################################################################################
 #                      Figs xx to xx - Suitability
@@ -105,7 +94,7 @@ rasterVis::levelplot(delta_rcp45, margin = NA, at = my.at2, contour=FALSE, par.s
 rasterVis::levelplot(delta_rcp85, margin = NA, at = my.at2, contour=FALSE, par.settings = myTheme2, main = "Suitability difference with RCP8.5")
 
 ################################################################################
-#                       Fig xx - DOP Suitability
+#                       Fig 3 - DOP Suitability
 ################################################################################
 
 dop <- raster::shapefile("C:/Users/asus/Documents/0. Artigos/4. SUBMETIDOS/Oliveiras_SDM/shapes/dop2_sem_mallorca.shp")
@@ -178,3 +167,84 @@ ggplot(all_suits, aes(fct_reorder(DOP, suitability), suitability, fill=factor(sc
   scale_fill_brewer(palette="Greens") + 
   ggtitle("PDO suitability in each scenario") +
   xlab("PDO") + ylab("Climatic suitability")
+
+### Second version (without the RCP 8.5) ###
+
+#Load rasters
+ensemble_olive_D <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_current.img")
+
+#RCP45
+ensemble_olive_D_2050_HE_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_HE_45.img")
+ensemble_olive_D_2050_GF_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_GF_45.img")
+ensemble_olive_D_2050_CC_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_CC_45.img")
+ensemble_olive_D_2050_IN_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_IN_45.img")
+ensemble_olive_D_2050_IP_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_IP_45.img")
+ensemble_olive_D_2050_MP_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_MP_45.img")
+
+#rcp45 - mean
+ensemble_olive_D_2050_MEAN_45 <- terra::mean(ensemble_olive_D_2050_HE_45,
+                                             ensemble_olive_D_2050_GF_45,
+                                             ensemble_olive_D_2050_CC_45,
+                                             ensemble_olive_D_2050_IN_45,
+                                             ensemble_olive_D_2050_IP_45,
+                                             ensemble_olive_D_2050_MP_45
+)
+
+dop <- raster::shapefile("C:/Users/mestr/Documents/0. Artigos/4. SUBMETIDOS/Oliveiras_SDM/shapes/dop2_sem_mallorca.shp")
+
+dop@data
+current_DOP_current_SUIT <- raster::extract(ensemble_olive_D, dop)
+current_DOP_future_SUIT_45 <- raster::extract(ensemble_olive_D_2050_MEAN_45, dop)
+
+codes <- dop@data$number
+names <- dop@data$NAME_0
+
+names(current_DOP_current_SUIT) <- codes
+names(current_DOP_future_SUIT_45) <- codes
+
+current_DOP_current_SUIT_DF <- data.frame()
+current_DOP_future_SUIT_45_DF <- data.frame()
+
+for(i in 1:length(current_DOP_current_SUIT)){
+  
+  vect1 <- current_DOP_current_SUIT[[i]]
+  names1 <- rep(paste0("PDO_", names(current_DOP_current_SUIT[i])), length(vect1))
+  current_DOP_current_SUIT_DF <- rbind(current_DOP_current_SUIT_DF, data.frame(vect1, names1))
+  
+}
+
+for(i in 1:length(current_DOP_future_SUIT_45)){
+  
+  vect2 <- current_DOP_future_SUIT_45[[i]]
+  names2 <- rep(paste0("PDO_", names(current_DOP_future_SUIT_45[i])), length(vect2))
+  current_DOP_future_SUIT_45_DF <- rbind(current_DOP_future_SUIT_45_DF, data.frame(vect2, names2))
+  
+}
+
+
+current_DOP_current_SUIT_DF <- cbind(current_DOP_current_SUIT_DF, rep("current", nrow(current_DOP_current_SUIT_DF)))
+names(current_DOP_current_SUIT_DF)[3] <- "scenario"
+names(current_DOP_current_SUIT_DF)[1] <- "suitability"
+names(current_DOP_current_SUIT_DF)[2] <- "DOP"
+View(current_DOP_current_SUIT_DF)
+
+current_DOP_future_SUIT_45_DF <- cbind(current_DOP_future_SUIT_45_DF, rep("rcp4.5", nrow(current_DOP_future_SUIT_45_DF)))
+names(current_DOP_future_SUIT_45_DF)[3] <- "scenario"
+names(current_DOP_future_SUIT_45_DF)[1] <- "suitability"
+names(current_DOP_future_SUIT_45_DF)[2] <- "DOP"
+View(current_DOP_future_SUIT_45_DF)
+
+all_suits <- rbind(current_DOP_current_SUIT_DF, current_DOP_future_SUIT_45_DF)
+names(all_suits)
+str(all_suits)
+
+all_suits$DOP <- as.factor(all_suits$DOP)
+
+tiff("fig3_suitability_boxplot.tif", width = 4000, height = 6500, res = 600)
+ggplot(all_suits, aes(fct_reorder(DOP, suitability), suitability, fill=factor(scenario))) +
+  geom_boxplot(outlier.colour = "lightgrey", outlier.size = 0.5) +   
+  coord_flip() +
+  scale_fill_brewer(palette="Greens") + 
+  ggtitle("PDO suitability in each scenario") +
+  xlab("PDO") + ylab("Climatic suitability")
+dev.off()
