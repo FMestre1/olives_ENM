@@ -109,23 +109,23 @@ dop <- raster::shapefile("C:/Users/mestr/Documents/0. Artigos/4. SUBMETIDOS/Oliv
 dop@data
 
 #Load rasters
-ensemble_olive_D <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_current.img")
+ensemble_olive_D <- raster("C:\\Users\\mestr\\Documents\\github\\olives_SDM\\ensemble_olive_D_current.img")
 
 #RCP45
-ensemble_olive_D_2050_HE_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_HE_45.img")
-ensemble_olive_D_2050_GF_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_GF_45.img")
-ensemble_olive_D_2050_CC_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_CC_45.img")
-ensemble_olive_D_2050_IN_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_IN_45.img")
-ensemble_olive_D_2050_IP_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_IP_45.img")
-ensemble_olive_D_2050_MP_45 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_MP_45.img")
+ensemble_olive_D_2050_HE_45 <- raster("C:\\Users\\mestr\\Documents\\github\\olives_SDM\\ensembles\\ensemble_olive_D_2050_HE_45.img")
+ensemble_olive_D_2050_GF_45 <- raster("C:\\Users\\mestr\\Documents\\github\\olives_SDM\\ensembles\\ensemble_olive_D_2050_GF_45.img")
+ensemble_olive_D_2050_CC_45 <- raster("C:\\Users\\mestr\\Documents\\github\\olives_SDM\\ensembles\\ensemble_olive_D_2050_CC_45.img")
+ensemble_olive_D_2050_IN_45 <- raster("C:\\Users\\mestr\\Documents\\github\\olives_SDM\\ensembles\\ensemble_olive_D_2050_IN_45.img")
+ensemble_olive_D_2050_IP_45 <- raster("C:\\Users\\mestr\\Documents\\github\\olives_SDM\\ensembles\\ensemble_olive_D_2050_IP_45.img")
+ensemble_olive_D_2050_MP_45 <- raster("C:\\Users\\mestr\\Documents\\github\\olives_SDM\\ensembles\\ensemble_olive_D_2050_MP_45.img")
 
 #RCP84
-ensemble_olive_D_2050_HE_85 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_HE_85.img") 
-ensemble_olive_D_2050_GF_85 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_GF_85.img") 
-ensemble_olive_D_2050_CC_85 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_CC_85.img")
-ensemble_olive_D_2050_IN_85 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_IN_85.img")
-ensemble_olive_D_2050_IP_85 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_IP_85.img")
-ensemble_olive_D_2050_MP_85 <- raster("C:\\Users\\mestr\\Desktop\\ensembles\\ensemble_olive_D_2050_MP_85.img")
+ensemble_olive_D_2050_HE_85 <- raster("C:\\Users\\mestr\\Documents\\github\\olives_SDM\\ensembles\\ensemble_olive_D_2050_HE_85.img") 
+ensemble_olive_D_2050_GF_85 <- raster("C:\\Users\\mestr\\Documents\\github\\olives_SDM\\ensembles\\ensemble_olive_D_2050_GF_85.img") 
+ensemble_olive_D_2050_CC_85 <- raster("C:\\Users\\mestr\\Documents\\github\\olives_SDM\\ensembles\\ensemble_olive_D_2050_CC_85.img")
+ensemble_olive_D_2050_IN_85 <- raster("C:\\Users\\mestr\\Documents\\github\\olives_SDM\\ensembles\\ensemble_olive_D_2050_IN_85.img")
+ensemble_olive_D_2050_IP_85 <- raster("C:\\Users\\mestr\\Documents\\github\\olives_SDM\\ensembles\\ensemble_olive_D_2050_IP_85.img")
+ensemble_olive_D_2050_MP_85 <- raster("C:\\Users\\mestr\\Documents\\github\\olives_SDM\\ensembles\\ensemble_olive_D_2050_MP_85.img")
 
 #rcp45 - mean
 ensemble_olive_D_2050_MEAN_45 <- terra::mean(ensemble_olive_D_2050_HE_45,
@@ -205,12 +205,15 @@ str(all_suits)
 
 all_suits$DOP <- as.factor(all_suits$DOP)
 
+pdf("figSx_suitability_boxplot.pdf", height = 150, width = 50)
 ggplot(all_suits, aes(fct_reorder(DOP, suitability), suitability, fill=factor(scenario))) +
   geom_boxplot(outlier.colour = "lightgrey", outlier.size = 0.5) +   
   coord_flip() +
   scale_fill_brewer(palette="Greens") + 
   ggtitle("PDO suitability in each scenario") +
-  xlab("PDO") + ylab("Climatic suitability")
+  xlab("PDO") + ylab("Climatic suitability") +
+  theme(axis.text = element_text(size = 40), legend.text = element_text(size = 60), legend.title = element_text(size = 60))      
+dev.off()
 
 ### Second version (without the RCP 8.5) ###
 
