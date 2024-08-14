@@ -202,6 +202,7 @@ names(current_DOP_future_SUIT_85_DF)[2] <- "DOP"
 all_suits <- rbind(current_DOP_current_SUIT_DF, current_DOP_future_SUIT_45_DF, current_DOP_future_SUIT_85_DF)
 names(all_suits)
 str(all_suits)
+head(all_suits)
 
 all_suits$DOP <- as.factor(all_suits$DOP)
 
